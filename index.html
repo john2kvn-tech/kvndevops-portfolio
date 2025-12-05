@@ -203,6 +203,7 @@
         <span class="line muted"># DevOps Engineer in progress · Deploy → Fix → Learn → Repeat</span>
         <span class="line divider"></span>
 
+        <!-- whoami -->
         <span class="line">
           <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
           <span class="cmd"> whoami</span>
@@ -214,6 +215,7 @@
 
         <span class="line divider"></span>
 
+        <!-- skills -->
         <span class="line">
           <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
           <span class="cmd"> skills --list</span>
@@ -244,6 +246,7 @@
 
         <span class="line divider"></span>
 
+        <!-- projects -->
         <span class="line">
           <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
           <span class="cmd"> projects --latest</span>
@@ -260,6 +263,7 @@
 
         <span class="line divider"></span>
 
+        <!-- status -->
         <span class="line">
           <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
           <span class="cmd"> status --now</span>
@@ -270,6 +274,74 @@
 
         <span class="line divider"></span>
 
+        <!-- journey log week 1 -->
+        <span class="line">
+          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+          <span class="cmd"> journey --week1</span>
+        </span>
+
+        <span class="line muted"># December 1st Week – What I’ve Done So Far 🚀</span>
+
+        <span class="line section-title">  Completed Setup:</span>
+        <span class="line">  • Bought domain: <strong>kvndevops.com</strong></span>
+        <span class="line">  • Installed Git, VS Code, and basic CLI tools</span>
+        <span class="line">  • Created first HTML portfolio page</span>
+        <span class="line">  • Initialized local Git repo and linked to GitHub</span>
+        <span class="line">  • Hosted site using GitHub Pages</span>
+        <span class="line">  • Configured GoDaddy DNS → GitHub Pages (A + CNAME records)</span>
+        <span class="line">  • Started SSL/HTTPS provisioning on GitHub</span>
+
+        <span class="line section-title">  Architecture (High Level):</span>
+        <span class="line muted">  Mac (VS Code) → Git → GitHub repo → GitHub Pages → DNS (GoDaddy) → kvndevops.com 🌍</span>
+
+        <span class="line section-title">  Skills Learned:</span>
+        <span class="line">  • Git basics: init, add, commit, push</span>
+        <span class="line">  • Remote setup: origin, Personal Access Token (PAT)</span>
+        <span class="line">  • GitHub Pages hosting flow</span>
+        <span class="line">  • DNS records: A, CNAME, root vs www</span>
+        <span class="line">  • Basic SSL/HTTPS concepts</span>
+        <span class="line">  • Terminal troubleshooting (quotes, commands, etc.)</span>
+
+        <span class="line section-title">  Errors Faced &amp; How I Fixed Them:</span>
+        <span class="line">  ❌ <strong>dquote/bquote stuck in terminal</strong></span>
+        <span class="line muted">     ↳ Cause: Open quote in a command.</span>
+        <span class="line muted">     ↳ Fix: Pressed <code>CTRL + C</code> to cancel, then re-ran clean commands.</span>
+
+        <span class="line">  ❌ <strong>code command not found</strong></span>
+        <span class="line muted">     ↳ Cause: VS Code CLI not in PATH.</span>
+        <span class="line muted">     ↳ Fix: Installed shell command from VS Code and created a symlink.</span>
+
+        <span class="line">  ❌ <strong>Git author identity unknown</strong></span>
+        <span class="line muted">     ↳ Fix: Set <code>user.name</code> and <code>user.email</code> with <code>git config --global</code>.</span>
+
+        <span class="line">  ❌ <strong>Repo not found / wrong remote URL</strong></span>
+        <span class="line muted">     ↳ Cause: Used <code>yourusername</code> instead of real username in Git remote.</span>
+        <span class="line muted">     ↳ Fix: Updated remote with <code>git remote set-url origin ...</code>.</span>
+
+        <span class="line">  ❌ <strong>Push rejected (remote contains work)</strong></span>
+        <span class="line muted">     ↳ Fix: Synced with remote using <code>git pull --rebase origin main</code>, then pushed.</span>
+
+        <span class="line">  ❌ <strong>DNS / SSL / 404 / privacy warnings</strong></span>
+        <span class="line muted">     ↳ Fix: Cleaned GoDaddy records, added correct A + CNAME entries, waited for DNS &amp; SSL to propagate.</span>
+
+        <span class="line muted">  → Theme of the week: Deploy → Fix → Learn → Repeat 😄</span>
+
+        <span class="line section-title">  Current Status:</span>
+        <span class="line">  ✔ Site deployed and reachable</span>
+        <span class="line">  ✔ DNS valid for primary domain</span>
+        <span class="line">  ⏳ HTTPS “Enforce” in progress (GitHub cert issuing)</span>
+        <span class="line">  🎯 DevOps Engineer in progress</span>
+        <span class="line">  🔥 Current focus: Azure &amp; CI/CD</span>
+
+        <span class="line section-title">  Up Next:</span>
+        <span class="line">  • Add CI/CD pipeline with GitHub Actions</span>
+        <span class="line">  • Learn Docker &amp; container basics</span>
+        <span class="line">  • Deploy an app to Azure + monitoring</span>
+        <span class="line">  • Add more real DevOps projects to this portfolio</span>
+
+        <span class="line divider"></span>
+
+        <!-- contact -->
         <span class="line">
           <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
           <span class="cmd"> contact --show</span>
@@ -280,6 +352,7 @@
 
         <span class="line divider"></span>
 
+        <!-- typing line -->
         <span class="line">
           <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
           <span id="typing-line" class="cmd"></span><span class="cursor"></span>
@@ -293,7 +366,7 @@
       " echo \"Deploy → Fix → Learn → Repeat\"",
       " # current focus: Azure & CI/CD",
       " # building real skills with hands-on practice",
-      " # no shortcuts, just consistent progress",
+      " # December Week 1: foundation complete",
       " clear"
     ];
 
