@@ -175,6 +175,26 @@
       margin: 8px 0 10px;
     }
 
+    .nav-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 4px 0 8px;
+    }
+
+    .nav-pill {
+      border-radius: 999px;
+      padding: 2px 10px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 11px;
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .nav-pill a {
+      border-bottom: none;
+      text-decoration: none;
+    }
+
     @media (max-width: 640px) {
       .terminal-body {
         font-size: 13px;
@@ -203,8 +223,26 @@
         <span class="line muted"># DevOps Engineer in progress · Deploy → Fix → Learn → Repeat</span>
         <span class="line divider"></span>
 
-        <!-- whoami -->
+        <!-- nav -->
         <span class="line">
+          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+          <span class="cmd"> nav --sections</span>
+        </span>
+        <div class="line nav-row">
+          <span class="nav-pill"><a href="#about">about-me</a></span>
+          <span class="nav-pill"><a href="#education">education</a></span>
+          <span class="nav-pill"><a href="#it-journey">it-journey</a></span>
+          <span class="nav-pill"><a href="#location">location</a></span>
+          <span class="nav-pill"><a href="#skills">skills</a></span>
+          <span class="nav-pill"><a href="#projects">projects</a></span>
+          <span class="nav-pill"><a href="#journey-week1">journey-week1</a></span>
+          <span class="nav-pill"><a href="#contact">contact</a></span>
+        </div>
+
+        <span class="line divider"></span>
+
+        <!-- whoami / about -->
+        <span class="line" id="about">
           <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
           <span class="cmd"> whoami</span>
         </span>
@@ -212,11 +250,50 @@
         <span class="line">  &gt; Role: Aspiring DevOps / SRE engineer (DevOps Engineer in progress)</span>
         <span class="line">  &gt; Mindset: Deploy → Fix → Learn → Repeat 😄</span>
         <span class="line">  &gt; Current focus: <strong>Azure &amp; CI/CD</strong></span>
+        <span class="line">  &gt; About: <span class="muted">[Add a short personal summary about your background, strengths, and personality here.]</span></span>
+
+        <span class="line divider"></span>
+
+        <!-- education -->
+        <span class="line" id="education">
+          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+          <span class="cmd"> cat education.txt</span>
+        </span>
+        <span class="line section-title">  education:</span>
+        <span class="line">  • <span class="muted">[Your degree or major, e.g. “Bachelors in Social Sciences”]</span></span>
+        <span class="line">  • <span class="muted">[College/University name]</span></span>
+        <span class="line">  • <span class="muted">[Any IT / DevOps certifications or courses (real or planned)]</span></span>
+
+        <span class="line divider"></span>
+
+        <!-- IT journey -->
+        <span class="line" id="it-journey">
+          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+          <span class="cmd"> history --it-journey</span>
+        </span>
+        <span class="line section-title">  it-journey (high level):</span>
+        <span class="line">  • <span class="muted">[Year] — Started working in IT (support / operations).</span></span>
+        <span class="line">  • <span class="muted">[Year] — Gained experience with production issues, on-call, troubleshooting.</span></span>
+        <span class="line">  • <span class="muted">[Year] — Got interested in automation, cloud, and DevOps.</span></span>
+        <span class="line">  • 2025 — Decided to build a full DevOps journey starting from fundamentals.</span>
+        <span class="line">  • 2025 — Launched kvndevops.com as my public learning & portfolio space.</span>
+
+        <span class="line divider"></span>
+
+        <!-- location -->
+        <span class="line" id="location">
+          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+          <span class="cmd"> geo --where-am-i</span>
+        </span>
+        <span class="line section-title">  location / background:</span>
+        <span class="line">  • <span class="muted">[City, State, Country — e.g. “Based in the USA (EST time zone)”]</span></span>
+        <span class="line">  • Comfortable working with global teams and multiple time zones.</span>
+        <span class="line">  • Open to hybrid/remote roles in DevOps / SRE.</span>
 
         <span class="line divider"></span>
 
         <!-- skills -->
-        <span class="line">
+        <span class="line" id="skills">
           <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
           <span class="cmd"> skills --list</span>
         </span>
@@ -247,7 +324,7 @@
         <span class="line divider"></span>
 
         <!-- projects -->
-        <span class="line">
+        <span class="line" id="projects">
           <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
           <span class="cmd"> projects --latest</span>
         </span>
@@ -275,14 +352,14 @@
         <span class="line divider"></span>
 
         <!-- journey log week 1 -->
-        <span class="line">
+        <span class="line" id="journey-week1">
           <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
           <span class="cmd"> journey --week1</span>
         </span>
 
         <span class="line muted"># December 1st Week – What I’ve Done So Far 🚀</span>
 
-        <span class="line section-title">  Completed Setup:</span>
+        <span class="line section-title">  completed-setup:</span>
         <span class="line">  • Bought domain: <strong>kvndevops.com</strong></span>
         <span class="line">  • Installed Git, VS Code, and basic CLI tools</span>
         <span class="line">  • Created first HTML portfolio page</span>
@@ -291,10 +368,10 @@
         <span class="line">  • Configured GoDaddy DNS → GitHub Pages (A + CNAME records)</span>
         <span class="line">  • Started SSL/HTTPS provisioning on GitHub</span>
 
-        <span class="line section-title">  Architecture (High Level):</span>
+        <span class="line section-title">  architecture (high-level):</span>
         <span class="line muted">  Mac (VS Code) → Git → GitHub repo → GitHub Pages → DNS (GoDaddy) → kvndevops.com 🌍</span>
 
-        <span class="line section-title">  Skills Learned:</span>
+        <span class="line section-title">  skills-learned:</span>
         <span class="line">  • Git basics: init, add, commit, push</span>
         <span class="line">  • Remote setup: origin, Personal Access Token (PAT)</span>
         <span class="line">  • GitHub Pages hosting flow</span>
@@ -302,7 +379,7 @@
         <span class="line">  • Basic SSL/HTTPS concepts</span>
         <span class="line">  • Terminal troubleshooting (quotes, commands, etc.)</span>
 
-        <span class="line section-title">  Errors Faced &amp; How I Fixed Them:</span>
+        <span class="line section-title">  errors-faced &amp; fixes:</span>
         <span class="line">  ❌ <strong>dquote/bquote stuck in terminal</strong></span>
         <span class="line muted">     ↳ Cause: Open quote in a command.</span>
         <span class="line muted">     ↳ Fix: Pressed <code>CTRL + C</code> to cancel, then re-ran clean commands.</span>
@@ -326,14 +403,14 @@
 
         <span class="line muted">  → Theme of the week: Deploy → Fix → Learn → Repeat 😄</span>
 
-        <span class="line section-title">  Current Status:</span>
+        <span class="line section-title">  current-status:</span>
         <span class="line">  ✔ Site deployed and reachable</span>
         <span class="line">  ✔ DNS valid for primary domain</span>
         <span class="line">  ⏳ HTTPS “Enforce” in progress (GitHub cert issuing)</span>
         <span class="line">  🎯 DevOps Engineer in progress</span>
         <span class="line">  🔥 Current focus: Azure &amp; CI/CD</span>
 
-        <span class="line section-title">  Up Next:</span>
+        <span class="line section-title">  up-next:</span>
         <span class="line">  • Add CI/CD pipeline with GitHub Actions</span>
         <span class="line">  • Learn Docker &amp; container basics</span>
         <span class="line">  • Deploy an app to Azure + monitoring</span>
@@ -342,7 +419,7 @@
         <span class="line divider"></span>
 
         <!-- contact -->
-        <span class="line">
+        <span class="line" id="contact">
           <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
           <span class="cmd"> contact --show</span>
         </span>
@@ -362,45 +439,45 @@
   </div>
 
   <script>
-  const commands = [
-    " echo \"Deploy → Fix → Learn → Repeat\"",
-    " # current focus: Azure & CI/CD",
-    " # building real skills with hands-on practice",
-    " # December Week 1: foundation complete"
-  ];
+    const commands = [
+      " echo \"Deploy → Fix → Learn → Repeat\"",
+      " # current focus: Azure & CI/CD",
+      " # building real skills with hands-on practice",
+      " # December Week 1: foundation complete"
+    ];
 
-  const typingLine = document.getElementById("typing-line");
-  const terminal = document.getElementById("terminal");
+    const typingLine = document.getElementById("typing-line");
+    const terminal = document.getElementById("terminal");
 
-  let cmdIndex = 0;
-  let charIndex = 0;
+    let cmdIndex = 0;
+    let charIndex = 0;
 
-  function typeNextChar() {
-    if (cmdIndex >= commands.length) {
-      typingLine.textContent = "";
-      return;
+    function typeNextChar() {
+      if (cmdIndex >= commands.length) {
+        typingLine.textContent = "";
+        return;
+      }
+
+      const current = commands[cmdIndex];
+
+      if (charIndex < current.length) {
+        typingLine.textContent += current.charAt(charIndex);
+        charIndex++;
+      } else {
+        const line = document.createElement("span");
+        line.className = "line";
+        line.textContent = typingLine.textContent;
+        terminal.insertBefore(line, typingLine.parentElement);
+
+        typingLine.textContent = "";
+        cmdIndex++;
+        charIndex = 0;
+      }
+
+      setTimeout(typeNextChar, 80);
     }
 
-    const current = commands[cmdIndex];
-
-    if (charIndex < current.length) {
-      typingLine.textContent += current.charAt(charIndex);
-      charIndex++;
-    } else {
-      const line = document.createElement("span");
-      line.className = "line";
-      line.textContent = typingLine.textContent;
-      terminal.insertBefore(line, typingLine.parentElement);
-
-      typingLine.textContent = "";
-      cmdIndex++;
-      charIndex = 0;
-    }
-
-    setTimeout(typeNextChar, 80);
-  }
-
-  setTimeout(typeNextChar, 1000);
-</script>
+    setTimeout(typeNextChar, 1000);
+  </script>
 </body>
 </html>
