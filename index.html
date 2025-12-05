@@ -1,11 +1,345 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>KVN DevOps</title>
-  </head>
-  <body>
-    <h1>Hello! I am John KVN</h1>
-    <h3>DevOps Engineer in Progress 🚀</h3>
-    <p>Welcome to my DevOps portfolio site.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>kvndevops :: John KVN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="John KVN · Aspiring DevOps Engineer — learning hands-on, every day. Current focus: Azure & CI/CD."
+  />
+  <style>
+    :root {
+      --bg: #050608;
+      --terminal-bg: #050608;
+      --terminal-border: #1f2933;
+      --terminal-text: #e5e7eb;
+      --terminal-muted: #6b7280;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.12);
+      --error: #f97373;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #020617 0, #020617 40%, #000000 100%);
+      color: var(--terminal-text);
+      font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .terminal {
+      background: linear-gradient(135deg, #020617 0%, #020617 60%, #020617 100%);
+      border-radius: 14px;
+      border: 1px solid var(--terminal-border);
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.7),
+        0 18px 45px rgba(0, 0, 0, 0.9);
+      overflow: hidden;
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: radial-gradient(circle at top left, #1f2937, #020617);
+      border-bottom: 1px solid #111827;
+    }
+
+    .dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+    }
+
+    .dot.red { background: #f87171; }
+    .dot.yellow { background: #fbbf24; }
+    .dot.green { background: #34d399; }
+
+    .term-title {
+      color: var(--terminal-muted);
+      font-size: 12px;
+    }
+
+    .terminal-body {
+      padding: 16px 18px 18px;
+      font-size: 14px;
+      line-height: 1.6;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .line {
+      display: block;
+      margin-bottom: 4px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .prompt {
+      color: var(--accent);
+    }
+
+    .user {
+      color: #38bdf8;
+    }
+
+    .path {
+      color: #facc15;
+    }
+
+    .cmd {
+      color: #e5e7eb;
+    }
+
+    .muted {
+      color: var(--terminal-muted);
+    }
+
+    .section-title {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .tag {
+      display: inline-block;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 2px 10px;
+      margin: 2px 6px 2px 0;
+      font-size: 11px;
+      color: #e5e7eb;
+      background: radial-gradient(circle at top, #020617, #020617 70%, #020617);
+    }
+
+    .tag--main {
+      border-color: rgba(34, 197, 94, 0.7);
+      background: var(--accent-soft);
+      color: #bbf7d0;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1.2em;
+      margin-left: 2px;
+      background: var(--accent);
+      animation: blink 1s steps(1) infinite;
+      vertical-align: text-bottom;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(56, 189, 248, 0.6);
+    }
+
+    a:hover {
+      border-bottom-style: solid;
+    }
+
+    .error {
+      color: var(--error);
+    }
+
+    .ok {
+      color: var(--accent);
+    }
+
+    .divider {
+      border-bottom: 1px dashed rgba(75, 85, 99, 0.8);
+      margin: 8px 0 10px;
+    }
+
+    @media (max-width: 640px) {
+      .terminal-body {
+        font-size: 13px;
+      }
+      .term-title {
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="terminal">
+      <div class="terminal-header">
+        <div class="dots">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+        </div>
+        <div class="term-title">john@kvn-devops: ~/portfolio — kvndevops.com</div>
+        <div></div>
+      </div>
+      <div class="terminal-body" id="terminal">
+        <span class="line muted"># kvn-devops :: personal DevOps / SRE lab</span>
+        <span class="line muted"># Aspiring DevOps Engineer — learning hands-on, every day.</span>
+        <span class="line muted"># DevOps Engineer in progress · Deploy → Fix → Learn → Repeat</span>
+        <span class="line divider"></span>
+
+        <span class="line">
+          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+          <span class="cmd"> whoami</span>
+        </span>
+        <span class="line">  &gt; Name: <strong>John KVN</strong></span>
+        <span class="line">  &gt; Role: Aspiring DevOps / SRE engineer (DevOps Engineer in progress)</span>
+        <span class="line">  &gt; Mindset: Deploy → Fix → Learn → Repeat 😄</span>
+        <span class="line">  &gt; Current focus: <strong>Azure &amp; CI/CD</strong></span>
+
+        <span class="line divider"></span>
+
+        <span class="line">
+          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+          <span class="cmd"> skills --list</span>
+        </span>
+        <span class="line section-title">  core:</span>
+        <span class="line">
+          <span class="tag tag--main">DevOps mindset</span>
+          <span class="tag">Aspiring DevOps Engineer</span>
+          <span class="tag">Linux / Shell</span>
+          <span class="tag">Git &amp; GitHub</span>
+          <span class="tag">Troubleshooting</span>
+        </span>
+        <span class="line section-title">  platform &amp; tools (growing):</span>
+        <span class="line">
+          <span class="tag">Azure (beginner)</span>
+          <span class="tag">Azure DevOps / GitHub Actions (learning)</span>
+          <span class="tag">CI/CD pipelines</span>
+          <span class="tag">Docker (learning)</span>
+          <span class="tag">Terraform (learning)</span>
+        </span>
+        <span class="line section-title">  soft skills:</span>
+        <span class="line">
+          <span class="tag">24/7 support experience</span>
+          <span class="tag">Problem solving</span>
+          <span class="tag">Ownership</span>
+          <span class="tag">Communication</span>
+        </span>
+
+        <span class="line divider"></span>
+
+        <span class="line">
+          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+          <span class="cmd"> projects --latest</span>
+        </span>
+        <span class="line">  [1] <span class="ok">Portfolio bootstrap</span></span>
+        <span class="line muted">      Static terminal-style site hosted on GitHub Pages and mapped to kvndevops.com.</span>
+        <span class="line muted">      Stack: HTML · CSS · Git · GitHub Pages · DNS (GoDaddy) · SSL (GitHub).</span>
+
+        <span class="line">  [2] <span class="muted">ci-cd-lab (coming soon)</span></span>
+        <span class="line muted">      Plan: build a CI/CD pipeline that tests &amp; auto-deploys this site on every push.</span>
+
+        <span class="line">  [3] <span class="muted">azure-playground (coming soon)</span></span>
+        <span class="line muted">      Plan: deploy a containerized app to Azure with monitoring &amp; alerts.</span>
+
+        <span class="line divider"></span>
+
+        <span class="line">
+          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+          <span class="cmd"> status --now</span>
+        </span>
+        <span class="line">  &gt; Learning path: Beginner → Intermediate → Advanced DevOps</span>
+        <span class="line">  &gt; Mode: Learning hands-on, every day.</span>
+        <span class="line">  &gt; Next steps: Docker · CI/CD · Terraform · Azure deployments</span>
+
+        <span class="line divider"></span>
+
+        <span class="line">
+          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+          <span class="cmd"> contact --show</span>
+        </span>
+        <span class="line">  &gt; GitHub: <a href="https://github.com/john2kvn-tech" target="_blank">github.com/john2kvn-tech</a></span>
+        <span class="line">  &gt; Email: <span class="muted">[add your email here]</span></span>
+        <span class="line">  &gt; LinkedIn: <span class="muted">[add your LinkedIn URL here]</span></span>
+
+        <span class="line divider"></span>
+
+        <span class="line">
+          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+          <span id="typing-line" class="cmd"></span><span class="cursor"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const commands = [
+      " echo \"Deploy → Fix → Learn → Repeat\"",
+      " # current focus: Azure & CI/CD",
+      " # building real skills with hands-on practice",
+      " # no shortcuts, just consistent progress",
+      " clear"
+    ];
+
+    const typingLine = document.getElementById("typing-line");
+    const terminal = document.getElementById("terminal");
+
+    let cmdIndex = 0;
+    let charIndex = 0;
+    let typing = true;
+
+    function typeNextChar() {
+      if (!typing) return;
+
+      if (cmdIndex >= commands.length) {
+        typingLine.textContent = "";
+        return;
+      }
+
+      const current = commands[cmdIndex];
+
+      if (charIndex < current.length) {
+        typingLine.textContent += current.charAt(charIndex);
+        charIndex++;
+      } else {
+        const line = document.createElement("span");
+        line.className = "line";
+        line.textContent = typingLine.textContent;
+        terminal.insertBefore(line, typingLine.parentElement);
+
+        if (current.trim() === "clear") {
+          const lines = Array.from(terminal.querySelectorAll(".line"));
+          lines.forEach((ln, idx) => {
+            if (idx < lines.length - 3) ln.remove();
+          });
+        }
+
+        typingLine.textContent = "";
+        cmdIndex++;
+        charIndex = 0;
+      }
+
+      terminal.scrollTop = terminal.scrollHeight;
+      setTimeout(typeNextChar, 80);
+    }
+
+    setTimeout(typeNextChar, 1000);
+  </script>
+</body>
 </html>
