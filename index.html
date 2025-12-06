@@ -274,7 +274,6 @@
       margin: 8px 0 10px;
     }
 
-    /* Sections hidden by default */
     .section {
       display: none;
       margin-top: 4px;
@@ -372,430 +371,27 @@
             </button>
           </div>
           <div class="terminal-body" id="terminal">
-            <!-- MINIMAL TOP VIEW ONLY -->
             <span class="line muted"># kvn-devops :: personal DevOps / automation lab</span>
-            <span class="line muted"># No noise. Just tech, learning, and future systems.</span>
             <span class="line muted"># Use the left menu for details, or tap KVN (top-right) for main console.</span>
             <span class="line divider"></span>
 
-            <!-- SECTIONS (HIDDEN UNTIL CLICKED / OR KVN LOGO) -->
             <div id="sections">
-
-              <!-- MAIN CONSOLE (NO PERSONAL DETAILS) -->
-              <div class="section" id="section-main">
-                <span class="line">
-                  <span class="prompt"><span class="user">kvn</span>@<span class="path">main-console</span>$</span>
-                  <span class="cmd"> sysinfo --overview</span>
-                </span>
-
-                <span class="line section-title">  system-status:</span>
-                <span class="line">• Mode: Learning · Building · Automating</span>
-                <span class="line">• Focus: DevOps fundamentals → Cloud → Automation</span>
-                <span class="line">• Motto: <strong>Deploy → Fix → Learn → Repeat</strong></span>
-
-                <span class="line divider"></span>
-
-                <span class="line section-title">  learning-sprints:</span>
-                <span class="line">• Sprint 01 → Git · GitHub · basic CLI</span>
-                <span class="line">• Sprint 02 → Azure fundamentals + static hosting</span>
-                <span class="line">• Sprint 03 → CI/CD pipelines (GitHub Actions / Azure DevOps)</span>
-                <span class="line">• Sprint 04 → Docker &amp; containers</span>
-                <span class="line">• Sprint 05 → Monitoring, logs, and reliability</span>
-
-                <span class="line divider"></span>
-
-                <span class="line section-title">  tech-stack (target):</span>
-                <span class="line">
-                  <span class="tag tag--main">DevOps</span>
-                  <span class="tag">Git</span>
-                  <span class="tag">GitHub</span>
-                  <span class="tag">Azure</span>
-                  <span class="tag">CI/CD</span>
-                  <span class="tag">Docker</span>
-                  <span class="tag">Terraform</span>
-                  <span class="tag">Monitoring</span>
-                </span>
-
-                <span class="line divider"></span>
-
-                <span class="line section-title">  future-systems &amp; robotics:</span>
-                <span class="line">• Goal: Let scripts, bots, and pipelines handle the repeatable work.</span>
-                <span class="line">• Humans: design systems, make decisions, solve complex problems.</span>
-                <span class="line">• Machines: run tests, deploy code, scale apps, watch metrics.</span>
-                <span class="line">• Vision: Build setups where robots / automation do the boring parts.</span>
-
-                <span class="line divider"></span>
-
-                <span class="line section-title">  main-goal:</span>
-                <span class="line">• Turn this lab into a collection of real DevOps projects.</span>
-                <span class="line">• Show the journey from beginner → confident DevOps engineer.</span>
-                <span class="line">• Keep everything transparent and practical.</span>
-
-                <span class="line muted">
-                  → No personal data here. Just KVN lab status, tech roadmap, and future automation vision.
-                </span>
-              </div>
-
-              <!-- ABOUT -->
-              <div class="section" id="section-about">
-                <span class="line">
-                  <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-                  <span class="cmd"> whoami</span>
-                </span>
-
-                <span class="line section-title">  identity:</span>
-                <span class="line">&gt; First Name: <strong>Venkata Nagendra Babu</strong></span>
-                <span class="line">&gt; Last Name: <strong>Kanchugantla</strong></span>
-                <span class="line">&gt; American Name: <strong>John</strong></span>
-                <span class="line">&gt; Indian Name: <strong>Nagendra</strong></span>
-                <span class="line">&gt; DOB: <span class="muted">(hidden — passcode required)</span></span>
-                <span class="line">&gt; Address: <span class="muted">(hidden — passcode required)</span></span>
-
-                <span class="line divider"></span>
-
-                <span class="line section-title">  role & lifestyle:</span>
-                <span class="line">&gt; Role: Aspiring DevOps / SRE Engineer</span>
-                <span class="line">&gt; Mindset: Deploy → Fix → Learn → Repeat 😄</span>
-                <span class="line">&gt; Strengths: Ownership · Consistency · Fast Learner</span>
-                <span class="line">&gt; Mission: Build real technology skills step-by-step — not just certifications.</span>
-
-                <span class="line divider"></span>
-
-                <span class="line section-title">  current-focus:</span>
-                <span class="line">echo "Deploy → Fix → Learn → Repeat"</span>
-                <span class="line"># current focus: Azure &amp; CI/CD</span>
-                <span class="line"># building real skills with hands-on practice</span>
-                <span class="line"># December Week 1: foundation complete</span>
-
-                <span class="line divider"></span>
-
-                <span class="line section-title">  working-on-now:</span>
-                <span class="line">• Building DevOps portfolio using real tooling</span>
-                <span class="line">• Understanding deployments and automation workflows</span>
-                <span class="line">• Preparing for DevOps interviews and skills challenges</span>
-
-                <span class="line section-title">  future-goals:</span>
-                <span class="line">• Docker + Kubernetes basics</span>
-                <span class="line">• Azure DevOps &amp; GitHub Actions pipelines</span>
-                <span class="line">• Infrastructure as Code (Terraform)</span>
-                <span class="line">• Monitoring + Observability (Azure Monitor)</span>
-              </div>
-
-              <!-- EDUCATION -->
-              <div class="section" id="section-education">
-  <span class="line">
-    <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-    <span class="cmd"> cat education.txt</span>
-  </span>
-  <span class="line section-title">  education:</span>
-  <span class="line">• <span class="muted">[Add your degree / major here, e.g. “Bachelors in Social Sciences”]</span></span>
-  <span class="line">• <span class="muted">[Add your college / university name here]</span></span>
-  <span class="line">• <span class="muted">[Add any current or planned IT / DevOps courses or certifications]</span></span>
-
-  <span class="line divider"></span>
-
-  <span class="line section-title">  diploma-verification:</span>
-  <span class="line muted">
-    # Enter the 4-digit PIN to unlock diploma link
-  </span>
-
-  <span class="line">
-    PIN:
-    <input
-      type="password"
-      id="diploma-pin"
-      maxlength="4"
-      style="background:#020617;border:1px solid #4b5563;color:#e5e7eb;padding:2px 6px;border-radius:6px;font-family:inherit;font-size:12px;width:60px;"
-    />
-    <button
-      id="diploma-btn"
-      style="margin-left:6px;background:#16a34a;border:1px solid #16a34a;color:#e5e7eb;padding:2px 10px;border-radius:999px;font-size:11px;cursor:pointer;"
-    >
-      Unlock
-    </button>
-  </span>
-
-  <span class="line muted" id="diploma-msg"></span>
-
-  <span class="line" id="diploma-link-row" style="display:none;">
-    &gt; Diploma:
-    <a href="https://www.parchment.com/u/award/90d0e4a81c46468d08a9d423bbe89ce5/file" target="_blank">
-      View verified diploma
-    </a>
-  </span>
-</div>
-
-
-
-              <!-- IT JOURNEY -->
-              <div class="section" id="section-it-journey">
-                <span class="line">
-                  <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-                  <span class="cmd"> history --it-journey</span>
-                </span>
-                <span class="line section-title">  it-journey (high level):</span>
-                <span class="line">• <span class="muted">[Year] — Started working in IT (support / operations / application support).</span></span>
-                <span class="line">• <span class="muted">[Year] — Built experience with production issues, on-call, and troubleshooting.</span></span>
-                <span class="line">• <span class="muted">[Year] — Became interested in automation, cloud, and DevOps practices.</span></span>
-                <span class="line">• 2025 — Committed to a structured DevOps journey (beginner → advanced).</span>
-                <span class="line">• 2025 — Launched kvndevops.com as a public learning and portfolio space.</span>
-              </div>
-
-              <!-- LOCATION -->
-              <div class="section" id="section-location">
-                <span class="line">
-                  <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-                  <span class="cmd"> geo --where-am-i</span>
-                </span>
-                <span class="line section-title">  location / background:</span>
-                <span class="line">• Atlanta, GA — EST Time Zone</span>
-                <span class="line">• Comfortable working with global teams and multiple time zones.</span>
-                <span class="line">• Open to hybrid/remote roles in DevOps / SRE.</span>
-              </div>
-
-              <!-- SKILLS -->
-              <div class="section" id="section-skills">
-                <span class="line">
-                  <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-                  <span class="cmd"> skills --list</span>
-                </span>
-                <span class="line section-title">  core:</span>
-                <span class="line">
-                  <span class="tag tag--main">DevOps mindset</span>
-                  <span class="tag">Linux / Shell</span>
-                  <span class="tag">Git &amp; GitHub</span>
-                  <span class="tag">Troubleshooting</span>
-                </span>
-                <span class="line section-title">  platform &amp; tools (growing):</span>
-                <span class="line">
-                  <span class="tag">Azure (beginner)</span>
-                  <span class="tag">Azure DevOps / GitHub Actions (learning)</span>
-                  <span class="tag">CI/CD pipelines</span>
-                  <span class="tag">Docker (learning)</span>
-                  <span class="tag">Terraform (learning)</span>
-                </span>
-                <span class="line section-title">  soft skills:</span>
-                <span class="line">
-                  <span class="tag">24/7 support experience</span>
-                  <span class="tag">Problem solving</span>
-                  <span class="tag">Ownership</span>
-                  <span class="tag">Communication</span>
-                </span>
-              </div>
-
-              <!-- DEPLOYMENT ROADMAP -->
-              <div class="section" id="section-deployment">
-                <span class="line">
-                  <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-                  <span class="cmd"> deploy --roadmap</span>
-                </span>
-
-                <span class="line section-title">  pipeline-stages:</span>
-                <span class="line">| Stage      | Goal                               | Tools                | Status       |</span>
-                <span class="line">|------------|------------------------------------|----------------------|-------------|</span>
-                <span class="line">| Build      | Validate &amp; test code            | GitHub Actions       | Planned     |</span>
-                <span class="line">| Container  | Dockerize portfolio / demo app     | Docker               | Coming soon |</span>
-                <span class="line">| Deploy     | Push to Azure hosting              | Azure Web/App Service| Future      |</span>
-                <span class="line">| Monitor    | Logs, metrics, uptime              | Azure Monitor        | Future      |</span>
-
-                <span class="line divider"></span>
-
-                <span class="line section-title">  upcoming-deployments:</span>
-                <span class="line">[A] ci-cd-lab 🚀</span>
-                <span class="line muted">    Auto deploy this site with GitHub Actions on push to main.</span>
-                <span class="line">[B] docker-app 🐳</span>
-                <span class="line muted">    First Dockerized app + image pushed to a registry.</span>
-                <span class="line">[C] cloud-run ☁️</span>
-                <span class="line muted">    Deploy app to Azure and verify basic scaling &amp; health checks.</span>
-
-                <span class="line divider"></span>
-
-                <span class="line section-title">  success-metric:</span>
-                <span class="line">✔ Deployment fully automated (no manual steps after commit)</span>
-                <span class="line">✔ Basic monitoring + alerts in place</span>
-                <span class="line">✔ Each project documented in this portfolio</span>
-
-                <span class="line muted">→ This roadmap will be updated as each stage becomes real.</span>
-              </div>
-
-              <!-- PROJECTS -->
-              <div class="section" id="section-projects">
-                <span class="line">
-                  <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-                  <span class="cmd"> projects --latest</span>
-                </span>
-                <span class="line">[1] <span class="ok">Portfolio bootstrap</span></span>
-                <span class="line muted">    Static terminal-style site hosted on GitHub Pages and mapped to kvndevops.com.</span>
-                <span class="line muted">    Stack: HTML · CSS · Git · GitHub Pages · DNS (GoDaddy) · SSL (GitHub).</span>
-                <span class="line">[2] <span class="muted">ci-cd-lab (coming soon)</span></span>
-                <span class="line muted">    Plan: build a CI/CD pipeline that tests &amp; auto-deploys this site on every push.</span>
-                <span class="line">[3] <span class="muted">azure-playground (coming soon)</span></span>
-                <span class="line muted">    Plan: deploy a containerized app to Azure with monitoring &amp; alerts.</span>
-              </div>
-
-              <!-- ARCHITECTURE -->
-              <div class="section" id="section-architecture">
-                <span class="line">
-                  <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-                  <span class="cmd"> architecture --show</span>
-                </span>
-                <span class="line muted"># Portfolio Deployment Architecture</span>
-
-                <span class="line section-title">  deployment-flow:</span>
-                <span class="line muted">  Local Dev → GitHub Repo → GitHub Pages → DNS + SSL → kvndevops.com 🌍</span>
-                <span class="line">• Edit website on local Mac using VS Code</span>
-                <span class="line">• Use Git to commit and push changes to GitHub</span>
-                <span class="line">• GitHub Pages automatically hosts and updates the static site</span>
-                <span class="line">• GoDaddy DNS routes traffic to GitHub Pages</span>
-                <span class="line">• GitHub issues SSL certificate so the site is available over HTTPS</span>
-
-                <span class="line section-title">  ui-layout:</span>
-                <span class="line muted">  Sidebar Navigation + Terminal UI Content</span>
-                <span class="line">┌────────────────────────────────────────────┐</span>
-                <span class="line">│ Sidebar Navigation  →  Section Switch      │</span>
-                <span class="line">│ Terminal Window     →  Scrollable Content  │</span>
-                <span class="line">└────────────────────────────────────────────┘</span>
-
-                <span class="line section-title">  front-end-components:</span>
-                <span class="line">• HTML → structure</span>
-                <span class="line">• CSS Flexbox → left sidebar + main layout</span>
-                <span class="line">• CSS Theme → terminal look and styling</span>
-                <span class="line">• JavaScript → typing simulation + section switching</span>
-
-                <span class="line section-title">  benefits:</span>
-                <span class="line">✔ Fast (static site, no backend complexity)</span>
-                <span class="line">✔ Secure (HTTPS via GitHub-managed SSL)</span>
-                <span class="line">✔ Free hosting (GitHub Pages)</span>
-                <span class="line">✔ Uses a real DevOps workflow (Git, GitHub, DNS, deployment)</span>
-
-                <span class="line muted">
-                  → This architecture shows entry-level DevOps skills: source control, hosting, DNS, SSL, and deployment.
-                </span>
-              </div>
-
-              <!-- JOURNEY WEEK 1 -->
-              <div class="section" id="section-journey-week1">
-                <span class="line">
-                  <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-                  <span class="cmd"> journey --week1</span>
-                </span>
-
-                <span class="line muted"># December 1st Week – What I’ve Done So Far 🚀</span>
-
-                <span class="line section-title">  completed-setup:</span>
-                <span class="line">• Bought domain: <strong>kvndevops.com</strong></span>
-                <span class="line">• Installed Git, VS Code, and basic CLI tools</span>
-                <span class="line">• Created first HTML portfolio page</span>
-                <span class="line">• Initialized local Git repo and linked it to GitHub</span>
-                <span class="line">• Hosted the site using GitHub Pages</span>
-                <span class="line">• Configured GoDaddy DNS → GitHub Pages (A + CNAME records)</span>
-                <span class="line">• Started SSL/HTTPS provisioning on GitHub</span>
-
-                <span class="line section-title">  architecture (high-level):</span>
-                <span class="line muted">  Mac (VS Code) → Git → GitHub repo → GitHub Pages → DNS (GoDaddy) → kvndevops.com 🌍</span>
-
-                <span class="line section-title">  skills-learned:</span>
-                <span class="line">• Git basics: init, add, commit, push</span>
-                <span class="line">• Remote setup: origin + Personal Access Token (PAT)</span>
-                <span class="line">• GitHub Pages hosting concepts</span>
-                <span class="line">• DNS: A records, CNAME, root vs www</span>
-                <span class="line">• Basic SSL/HTTPS concepts</span>
-                <span class="line">• Terminal troubleshooting (broken quotes, commands, etc.)</span>
-
-                <span class="line section-title">  errors-faced &amp; fixes:</span>
-                <span class="line">❌ dquote/bquote stuck in terminal</span>
-                <span class="line muted">   ↳ Cause: Open quote in a command.</span>
-                <span class="line muted">   ↳ Fix: Pressed <code>CTRL + C</code> to cancel, then re-ran a clean command.</span>
-
-                <span class="line">❌ code command not found</span>
-                <span class="line muted">   ↳ Cause: VS Code CLI not available in PATH.</span>
-                <span class="line muted">   ↳ Fix: Installed shell command from VS Code and created a symlink.</span>
-
-                <span class="line">❌ Git author identity unknown</span>
-                <span class="line muted">   ↳ Fix: Set <code>user.name</code> and <code>user.email</code> using <code>git config --global</code>.</span>
-
-                <span class="line">❌ Repo not found / wrong remote URL</span>
-                <span class="line muted">   ↳ Cause: Used placeholder <code>yourusername</code> instead of real GitHub username.</span>
-                <span class="line muted">   ↳ Fix: Updated remote with <code>git remote set-url origin ...</code>.</span>
-
-                <span class="line">❌ Push rejected (remote contains work)</span>
-                <span class="line muted">   ↳ Fix: Synced with remote using <code>git pull --rebase origin main</code>, then pushed again.</span>
-
-                <span class="line">❌ DNS / SSL / 404 / privacy warnings</span>
-                <span class="line muted">   ↳ Fix: Cleaned GoDaddy records, added correct GitHub Pages A + CNAME entries, and waited for propagation.</span>
-
-                <span class="line muted">→ Theme of the week: Deploy → Fix → Learn → Repeat 😄</span>
-
-                <span class="line section-title">  current-status:</span>
-                <span class="line">✔ Site deployed and reachable</span>
-                <span class="line">✔ DNS valid for primary domain</span>
-                <span class="line">⏳ HTTPS “Enforce” in progress (GitHub certificate issuing)</span>
-                <span class="line">🎯 DevOps Engineer in progress</span>
-                <span class="line">🔥 Current focus: Azure &amp; CI/CD</span>
-
-                <span class="line section-title">  up-next:</span>
-                <span class="line">• Add CI/CD pipeline with GitHub Actions</span>
-                <span class="line">• Learn Docker &amp; container basics</span>
-                <span class="line">• Deploy an app to Azure with monitoring</span>
-                <span class="line">• Add more real DevOps projects to this portfolio</span>
-              </div>
-
-              <!-- JOURNEY WEEK 2 (PLAN) -->
-              <div class="section" id="section-journey-week2">
-                <span class="line">
-                  <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-                  <span class="cmd"> journey --week2</span>
-                </span>
-
-                <span class="line muted"># December 2nd Week – Plan & Focus 🐳</span>
-
-                <span class="line section-title">  week2-focus:</span>
-                <span class="line">• Install Docker Desktop and run first containers</span>
-                <span class="line">• Learn basic Docker commands (build, run, images, ps)</span>
-                <span class="line">• Start simple CI/CD workflow idea for this site</span>
-
-                <span class="line section-title">  planned-tasks:</span>
-                <span class="line">[1] docker-hello-world</span>
-                <span class="line muted">    Run sample images locally and understand how containers behave.</span>
-                <span class="line">[2] dockerize-simple-app</span>
-                <span class="line muted">    Containerize a basic HTML or small app for practice.</span>
-                <span class="line">[3] ci-cd-draft</span>
-                <span class="line muted">    Draft a basic GitHub Actions workflow file (no real deploy yet).</span>
-
-                <span class="line section-title">  learning-outcome:</span>
-                <span class="line">✔ Understand Docker images vs containers</span>
-                <span class="line">✔ Get comfortable running commands from docs without fear</span>
-                <span class="line">✔ Have a base ready for future CI/CD + Azure deployment</span>
-
-                <span class="line muted">→ At the end of Week 2, this section can be updated with “Done” vs “Still learning”.</span>
-              </div>
-
-              <!-- CONTACT + RESUME -->
-              <div class="section" id="section-contact">
-                <span class="line">
-                  <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-                  <span class="cmd"> contact --show</span>
-                </span>
-                <span class="line"> &gt; GitHub: <a href="https://github.com/john2kvn-tech" target="_blank">github.com/john2kvn-tech</a></span>
-                <span class="line"> &gt; Email: <span class="muted">[add your email here]</span></span>
-                <span class="line"> &gt; LinkedIn: <span class="muted">[add your LinkedIn URL here]</span></span>
-
-                <span class="line divider"></span>
-
-                <span class="line section-title">  resume:</span>
-                <span class="line">
-                  • <a href="resume.pdf" target="_blank">Download Resume (PDF)</a>
-                </span>
-                <span class="line muted">
-                  (Place a file named <code>resume.pdf</code> in this repository root so this link works.)
-                </span>
-              </div>
-
+              <div class="section" id="section-main" data-src="sections/main.html"></div>
+              <div class="section" id="section-about" data-src="sections/about.html"></div>
+              <div class="section" id="section-education" data-src="sections/education.html"></div>
+              <div class="section" id="section-it-journey" data-src="sections/it-journey.html"></div>
+              <div class="section" id="section-location" data-src="sections/location.html"></div>
+              <div class="section" id="section-skills" data-src="sections/skills.html"></div>
+              <div class="section" id="section-deployment" data-src="sections/deployment.html"></div>
+              <div class="section" id="section-projects" data-src="sections/projects.html"></div>
+              <div class="section" id="section-architecture" data-src="sections/architecture.html"></div>
+              <div class="section" id="section-journey-week1" data-src="sections/journey-week1.html"></div>
+              <div class="section" id="section-journey-week2" data-src="sections/journey-week2.html"></div>
+              <div class="section" id="section-contact" data-src="sections/contact.html"></div>
             </div>
 
             <span class="line divider"></span>
 
-            <!-- TYPING LINE -->
             <span class="line">
               <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
               <span id="typing-line" class="cmd"></span><span class="cursor"></span>
@@ -817,7 +413,7 @@
     const typingLine = document.getElementById("typing-line");
     const terminal = document.getElementById("terminal");
     const navLinks = document.querySelectorAll(".nav-link");
-    const sections = document.querySelectorAll(".section");
+    const sectionDivs = document.querySelectorAll(".section");
     const kvnLogo = document.getElementById("kvn-logo");
 
     let cmdIndex = 0;
@@ -848,8 +444,59 @@
       setTimeout(typeNextChar, 80);
     }
 
+    // Initialize diploma PIN listeners after education section is loaded
+    function initDiplomaPin() {
+      const diplomaPin = document.getElementById("diploma-pin");
+      const diplomaBtn = document.getElementById("diploma-btn");
+      const diplomaMsg = document.getElementById("diploma-msg");
+      const diplomaLinkRow = document.getElementById("diploma-link-row");
+      const DIPLOMA_CODE = "0279";
+
+      if (!diplomaPin || !diplomaBtn || !diplomaMsg || !diplomaLinkRow) return;
+
+      function checkDiplomaPin() {
+        if (diplomaPin.value === DIPLOMA_CODE) {
+          diplomaMsg.textContent = "✔ Access granted.";
+          diplomaMsg.classList.remove("error");
+          diplomaMsg.classList.add("ok");
+          diplomaLinkRow.style.display = "block";
+        } else {
+          diplomaMsg.textContent = "✖ Invalid PIN.";
+          diplomaMsg.classList.remove("ok");
+          diplomaMsg.classList.add("error");
+          diplomaLinkRow.style.display = "none";
+        }
+      }
+
+      diplomaBtn.addEventListener("click", checkDiplomaPin);
+      diplomaPin.addEventListener("keyup", (e) => {
+        if (e.key === "Enter") checkDiplomaPin();
+      });
+    }
+
+    async function loadSection(name) {
+      const target = document.getElementById("section-" + name);
+      if (!target) return;
+
+      const src = target.getAttribute("data-src");
+      if (!src || target.dataset.loaded === "1") return;
+
+      try {
+        const res = await fetch(src);
+        const html = await res.text();
+        target.innerHTML = html;
+        target.dataset.loaded = "1";
+
+        if (name === "education") {
+          initDiplomaPin();
+        }
+      } catch (e) {
+        target.innerHTML = '<span class="line error">Failed to load section.</span>';
+      }
+    }
+
     function showSection(name) {
-      sections.forEach(sec => sec.classList.remove("active"));
+      sectionDivs.forEach(sec => sec.classList.remove("active"));
       navLinks.forEach(link => link.classList.remove("nav-link-active"));
 
       const target = document.getElementById("section-" + name);
@@ -860,6 +507,7 @@
             link.classList.add("nav-link-active");
           }
         });
+        loadSection(name);
         terminal.scrollTop = target.offsetTop - 40;
       }
     }
@@ -880,7 +528,6 @@
 
     // default view: main console (no personal info)
     showSection("main");
-
     setTimeout(typeNextChar, 1000);
   </script>
 </body>
