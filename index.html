@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="John KVN · Aspiring DevOps Engineer — learning hands-on, every day. Current focus: Azure & CI/CD."
+    content="KVN DevOps Lab — Learning, automation, and future-ready engineering."
   />
   <style>
     :root {
@@ -159,6 +159,25 @@
     .term-title {
       color: var(--terminal-muted);
       font-size: 12px;
+    }
+
+    .kvn-logo {
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.8);
+      background: rgba(15, 23, 42, 0.95);
+      color: #bbf7d0;
+      font-size: 11px;
+      padding: 4px 10px;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+    }
+
+    .kvn-logo:hover {
+      background: rgba(34, 197, 94, 0.18);
+      transform: translateY(-1px);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.5);
     }
 
     .terminal-body {
@@ -347,18 +366,75 @@
               <div class="dot yellow"></div>
               <div class="dot green"></div>
             </div>
-            <div class="term-title">john@kvn-devops: ~/portfolio — kvndevops.com</div>
-            <div></div>
+            <div class="term-title">kvn@devops-lab: ~/main-console — kvndevops.com</div>
+            <button id="kvn-logo" class="kvn-logo" title="KVN Main Console">
+              KVN
+            </button>
           </div>
           <div class="terminal-body" id="terminal">
             <!-- MINIMAL TOP VIEW ONLY -->
-            <span class="line muted"># kvn-devops :: personal DevOps / SRE lab</span>
-            <span class="line muted"># DevOps Engineer in progress — learning hands-on, every day.</span>
-            <span class="line muted"># Use the menu on the left to explore sections (about, skills, journey, etc.).</span>
+            <span class="line muted"># kvn-devops :: personal DevOps / automation lab</span>
+            <span class="line muted"># No noise. Just tech, learning, and future systems.</span>
+            <span class="line muted"># Use the left menu for details, or tap KVN (top-right) for main console.</span>
             <span class="line divider"></span>
 
-            <!-- SECTIONS (HIDDEN UNTIL CLICKED) -->
+            <!-- SECTIONS (HIDDEN UNTIL CLICKED / OR KVN LOGO) -->
             <div id="sections">
+
+              <!-- MAIN CONSOLE (NO PERSONAL DETAILS) -->
+              <div class="section" id="section-main">
+                <span class="line">
+                  <span class="prompt"><span class="user">kvn</span>@<span class="path">main-console</span>$</span>
+                  <span class="cmd"> sysinfo --overview</span>
+                </span>
+
+                <span class="line section-title">  system-status:</span>
+                <span class="line">• Mode: Learning · Building · Automating</span>
+                <span class="line">• Focus: DevOps fundamentals → Cloud → Automation</span>
+                <span class="line">• Motto: <strong>Deploy → Fix → Learn → Repeat</strong></span>
+
+                <span class="line divider"></span>
+
+                <span class="line section-title">  learning-sprints:</span>
+                <span class="line">• Sprint 01 → Git · GitHub · basic CLI</span>
+                <span class="line">• Sprint 02 → Azure fundamentals + static hosting</span>
+                <span class="line">• Sprint 03 → CI/CD pipelines (GitHub Actions / Azure DevOps)</span>
+                <span class="line">• Sprint 04 → Docker &amp; containers</span>
+                <span class="line">• Sprint 05 → Monitoring, logs, and reliability</span>
+
+                <span class="line divider"></span>
+
+                <span class="line section-title">  tech-stack (target):</span>
+                <span class="line">
+                  <span class="tag tag--main">DevOps</span>
+                  <span class="tag">Git</span>
+                  <span class="tag">GitHub</span>
+                  <span class="tag">Azure</span>
+                  <span class="tag">CI/CD</span>
+                  <span class="tag">Docker</span>
+                  <span class="tag">Terraform</span>
+                  <span class="tag">Monitoring</span>
+                </span>
+
+                <span class="line divider"></span>
+
+                <span class="line section-title">  future-systems &amp; robotics:</span>
+                <span class="line">• Goal: Let scripts, bots, and pipelines handle the repeatable work.</span>
+                <span class="line">• Humans: design systems, make decisions, solve complex problems.</span>
+                <span class="line">• Machines: run tests, deploy code, scale apps, watch metrics.</span>
+                <span class="line">• Vision: Build setups where robots / automation do the boring parts.</span>
+
+                <span class="line divider"></span>
+
+                <span class="line section-title">  main-goal:</span>
+                <span class="line">• Turn this lab into a collection of real DevOps projects.</span>
+                <span class="line">• Show the journey from beginner → confident DevOps engineer.</span>
+                <span class="line">• Keep everything transparent and practical.</span>
+
+                <span class="line muted">
+                  → No personal data here. Just KVN lab status, tech roadmap, and future automation vision.
+                </span>
+              </div>
 
               <!-- ABOUT -->
               <div class="section" id="section-about">
@@ -485,8 +561,8 @@
                 <span class="line">|------------|------------------------------------|----------------------|-------------|</span>
                 <span class="line">| Build      | Validate &amp; test code            | GitHub Actions       | Planned     |</span>
                 <span class="line">| Container  | Dockerize portfolio / demo app     | Docker               | Coming soon |</span>
-                <span class="line">| Deploy     | Push to Azure hosting               | Azure Web/App Service| Future      |</span>
-                <span class="line">| Monitor    | Logs, metrics, uptime               | Azure Monitor        | Future      |</span>
+                <span class="line">| Deploy     | Push to Azure hosting              | Azure Web/App Service| Future      |</span>
+                <span class="line">| Monitor    | Logs, metrics, uptime              | Azure Monitor        | Future      |</span>
 
                 <span class="line divider"></span>
 
@@ -630,7 +706,7 @@
                 <span class="line">• Add more real DevOps projects to this portfolio</span>
               </div>
 
-              <!-- JOURNEY WEEK 2 (SAMPLE PLAN) -->
+              <!-- JOURNEY WEEK 2 (PLAN) -->
               <div class="section" id="section-journey-week2">
                 <span class="line">
                   <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
@@ -708,6 +784,7 @@
     const terminal = document.getElementById("terminal");
     const navLinks = document.querySelectorAll(".nav-link");
     const sections = document.querySelectorAll(".section");
+    const kvnLogo = document.getElementById("kvn-logo");
 
     let cmdIndex = 0;
     let charIndex = 0;
@@ -760,6 +837,15 @@
         showSection(name);
       });
     });
+
+    if (kvnLogo) {
+      kvnLogo.addEventListener("click", () => {
+        showSection("main");
+      });
+    }
+
+    // default view: main console (no personal info)
+    showSection("main");
 
     setTimeout(typeNextChar, 1000);
   </script>
