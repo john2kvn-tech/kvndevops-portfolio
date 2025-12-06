@@ -31,15 +31,81 @@
       color: var(--terminal-text);
       font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       padding: 16px;
     }
 
-    .wrapper {
-      width: 100%;
-      max-width: 960px;
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .layout {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    /* LEFT SIDEBAR */
+    .sidebar {
+      flex: 0 0 220px;
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 14px;
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      padding: 14px 14px 16px;
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.7),
+        0 18px 45px rgba(0, 0, 0, 0.7);
+    }
+
+    .sidebar-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 2px;
+    }
+
+    .sidebar-subtitle {
+      font-size: 11px;
+      color: var(--terminal-muted);
+      margin-bottom: 10px;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .nav-link {
+      display: block;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: #e5e7eb;
+      text-decoration: none;
+      background: rgba(15, 23, 42, 0.95);
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+    }
+
+    .nav-link:hover {
+      background: rgba(34, 197, 94, 0.12);
+      border-color: rgba(34, 197, 94, 0.8);
+      transform: translateX(1px);
+    }
+
+    .sidebar-footer {
+      font-size: 10px;
+      color: var(--terminal-muted);
+      margin-top: 6px;
+      border-top: 1px dashed rgba(55, 65, 81, 0.9);
+      padding-top: 6px;
+    }
+
+    /* MAIN / TERMINAL */
+    .main {
+      flex: 1;
     }
 
     .terminal {
@@ -175,24 +241,17 @@
       margin: 8px 0 10px;
     }
 
-    .nav-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 4px 0 8px;
-    }
-
-    .nav-pill {
-      border-radius: 999px;
-      padding: 2px 10px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      font-size: 11px;
-      background: rgba(15, 23, 42, 0.8);
-    }
-
-    .nav-pill a {
-      border-bottom: none;
-      text-decoration: none;
+    @media (max-width: 768px) {
+      .layout {
+        flex-direction: column;
+      }
+      .sidebar {
+        flex: none;
+        width: 100%;
+      }
+      .terminal-body {
+        max-height: 70vh;
+      }
     }
 
     @media (max-width: 640px) {
@@ -206,235 +265,271 @@
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="terminal">
-      <div class="terminal-header">
-        <div class="dots">
-          <div class="dot red"></div>
-          <div class="dot yellow"></div>
-          <div class="dot green"></div>
+  <div class="page">
+    <div class="layout">
+      <!-- LEFT SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-title">kvndevops.com</div>
+        <div class="sidebar-subtitle">DevOps Journey · John KVN</div>
+
+        <nav class="sidebar-nav">
+          <a href="#about" class="nav-link">About Me</a>
+          <a href="#education" class="nav-link">Education</a>
+          <a href="#it-journey" class="nav-link">IT Journey</a>
+          <a href="#location" class="nav-link">Location</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#architecture" class="nav-link">Architecture</a>
+          <a href="#journey-week1" class="nav-link">Journey · Week 1</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="sidebar-footer">
+          Last update: Dec 1st Week<br />
+          Mode: DevOps Engineer in progress
         </div>
-        <div class="term-title">john@kvn-devops: ~/portfolio — kvndevops.com</div>
-        <div></div>
-      </div>
-      <div class="terminal-body" id="terminal">
-        <span class="line muted"># kvn-devops :: personal DevOps / SRE lab</span>
-        <span class="line muted"># Aspiring DevOps Engineer — learning hands-on, every day.</span>
-        <span class="line muted"># DevOps Engineer in progress · Deploy → Fix → Learn → Repeat</span>
-        <span class="line divider"></span>
+      </aside>
 
-        <!-- nav -->
-        <span class="line">
-          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-          <span class="cmd"> nav --sections</span>
-        </span>
-        <div class="line nav-row">
-          <span class="nav-pill"><a href="#about">about-me</a></span>
-          <span class="nav-pill"><a href="#education">education</a></span>
-          <span class="nav-pill"><a href="#it-journey">it-journey</a></span>
-          <span class="nav-pill"><a href="#location">location</a></span>
-          <span class="nav-pill"><a href="#skills">skills</a></span>
-          <span class="nav-pill"><a href="#projects">projects</a></span>
-          <span class="nav-pill"><a href="#journey-week1">journey-week1</a></span>
-          <span class="nav-pill"><a href="#contact">contact</a></span>
+      <!-- RIGHT: TERMINAL CONTENT -->
+      <main class="main">
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="dots">
+              <div class="dot red"></div>
+              <div class="dot yellow"></div>
+              <div class="dot green"></div>
+            </div>
+            <div class="term-title">john@kvn-devops: ~/portfolio — kvndevops.com</div>
+            <div></div>
+          </div>
+          <div class="terminal-body" id="terminal">
+            <!-- MINIMAL TOP VIEW -->
+            <span class="line muted"># kvn-devops :: personal DevOps / SRE lab</span>
+            <span class="line muted"># DevOps Engineer in progress · Aspiring DevOps Engineer — learning hands-on, every day.</span>
+            <span class="line muted"># Use the menu on the left to explore details (about, skills, journey, etc.).</span>
+            <span class="line divider"></span>
+
+            <!-- ABOUT (only when scrolled or clicked) -->
+            <span class="line" id="about">
+              <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+              <span class="cmd"> whoami</span>
+            </span>
+            <span class="line">  &gt; Name: <strong>John KVN</strong></span>
+            <span class="line">  &gt; Role: Aspiring DevOps / SRE engineer</span>
+            <span class="line">  &gt; Mindset: Deploy → Fix → Learn → Repeat 😄</span>
+            <span class="line">  &gt; Summary: <span class="muted">IT professional moving into DevOps, focused on real hands-on skills rather than just theory or certificates.</span></span>
+
+            <span class="line divider"></span>
+
+            <!-- EDUCATION -->
+            <span class="line" id="education">
+              <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+              <span class="cmd"> cat education.txt</span>
+            </span>
+            <span class="line section-title">  education:</span>
+            <span class="line">  • <span class="muted">[Add your degree / major here, e.g. “Bachelors in Social Sciences”]</span></span>
+            <span class="line">  • <span class="muted">[Add your college / university name here]</span></span>
+            <span class="line">  • <span class="muted">[Add any current or planned IT / DevOps courses or certifications]</span></span>
+
+            <span class="line divider"></span>
+
+            <!-- IT JOURNEY -->
+            <span class="line" id="it-journey">
+              <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+              <span class="cmd"> history --it-journey</span>
+            </span>
+            <span class="line section-title">  it-journey (high level):</span>
+            <span class="line">  • <span class="muted">[Year] — Started working in IT (support / operations / application support).</span></span>
+            <span class="line">  • <span class="muted">[Year] — Built experience with production issues, on-call, and troubleshooting.</span></span>
+            <span class="line">  • <span class="muted">[Year] — Became interested in automation, cloud, and DevOps practices.</span></span>
+            <span class="line">  • 2025 — Committed to a structured DevOps journey (beginner → advanced).</span>
+            <span class="line">  • 2025 — Launched kvndevops.com as a public learning and portfolio space.</span>
+
+            <span class="line divider"></span>
+
+            <!-- LOCATION -->
+            <span class="line" id="location">
+              <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+              <span class="cmd"> geo --where-am-i</span>
+            </span>
+            <span class="line section-title">  location / background:</span>
+            <span class="line">  • Atlanta, GA — EST Time Zone</span>
+            <span class="line">  • Comfortable working with global teams and multiple time zones.</span>
+            <span class="line">  • Open to hybrid/remote roles in DevOps / SRE.</span>
+
+            <span class="line divider"></span>
+
+            <!-- SKILLS -->
+            <span class="line" id="skills">
+              <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+              <span class="cmd"> skills --list</span>
+            </span>
+            <span class="line section-title">  core:</span>
+            <span class="line">
+              <span class="tag tag--main">DevOps mindset</span>
+              <span class="tag">Linux / Shell</span>
+              <span class="tag">Git &amp; GitHub</span>
+              <span class="tag">Troubleshooting</span>
+            </span>
+            <span class="line section-title">  platform &amp; tools (growing):</span>
+            <span class="line">
+              <span class="tag">Azure (beginner)</span>
+              <span class="tag">Azure DevOps / GitHub Actions (learning)</span>
+              <span class="tag">CI/CD pipelines</span>
+              <span class="tag">Docker (learning)</span>
+              <span class="tag">Terraform (learning)</span>
+            </span>
+            <span class="line section-title">  soft skills:</span>
+            <span class="line">
+              <span class="tag">24/7 support experience</span>
+              <span class="tag">Problem solving</span>
+              <span class="tag">Ownership</span>
+              <span class="tag">Communication</span>
+            </span>
+
+            <span class="line divider"></span>
+
+            <!-- PROJECTS -->
+            <span class="line" id="projects">
+              <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+              <span class="cmd"> projects --latest</span>
+            </span>
+            <span class="line">  [1] <span class="ok">Portfolio bootstrap</span></span>
+            <span class="line muted">      Static terminal-style site hosted on GitHub Pages and mapped to kvndevops.com.</span>
+            <span class="line muted">      Stack: HTML · CSS · Git · GitHub Pages · DNS (GoDaddy) · SSL (GitHub).</span>
+            <span class="line">  [2] <span class="muted">ci-cd-lab (coming soon)</span></span>
+            <span class="line muted">      Plan: build a CI/CD pipeline that tests &amp; auto-deploys this site on every push.</span>
+            <span class="line">  [3] <span class="muted">azure-playground (coming soon)</span></span>
+            <span class="line muted">      Plan: deploy a containerized app to Azure with monitoring &amp; alerts.</span>
+
+            <span class="line divider"></span>
+
+            <!-- ARCHITECTURE -->
+            <span class="line" id="architecture">
+              <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+              <span class="cmd"> architecture --show</span>
+            </span>
+            <span class="line muted"># Portfolio Deployment Architecture</span>
+
+            <span class="line section-title">  deployment-flow:</span>
+            <span class="line muted">  Local Dev → GitHub Repo → GitHub Pages → DNS + SSL → kvndevops.com 🌍</span>
+            <span class="line">  • Edit website on local Mac using VS Code</span>
+            <span class="line">  • Use Git to commit and push changes to GitHub</span>
+            <span class="line">  • GitHub Pages automatically hosts and updates the static site</span>
+            <span class="line">  • GoDaddy DNS routes traffic to GitHub Pages</span>
+            <span class="line">  • GitHub issues SSL certificate so the site is available over HTTPS</span>
+
+            <span class="line section-title">  ui-layout:</span>
+            <span class="line muted">  Sidebar Navigation + Terminal UI Content</span>
+            <span class="line">  ┌────────────────────────────────────────────┐</span>
+            <span class="line">  │ Sidebar Navigation  →  Section Anchors      │</span>
+            <span class="line">  │ Terminal Window     →  Scrollable Content   │</span>
+            <span class="line">  └────────────────────────────────────────────┘</span>
+
+            <span class="line section-title">  front-end-components:</span>
+            <span class="line">  • HTML → structure</span>
+            <span class="line">  • CSS Flexbox → left sidebar + main layout</span>
+            <span class="line">  • CSS Theme → terminal look and styling</span>
+            <span class="line">  • JavaScript → typing simulation on the CLI line</span>
+
+            <span class="line section-title">  benefits:</span>
+            <span class="line">  ✔ Fast (static site, no backend complexity)</span>
+            <span class="line">  ✔ Secure (HTTPS via GitHub-managed SSL)</span>
+            <span class="line">  ✔ Free hosting (GitHub Pages)</span>
+            <span class="line">  ✔ Uses a real DevOps workflow (Git, GitHub, DNS, deployment)</span>
+
+            <span class="line muted">
+              → This architecture shows entry-level DevOps skills: source control, hosting, DNS, SSL, and deployment.
+            </span>
+
+            <span class="line divider"></span>
+
+            <!-- JOURNEY WEEK 1 -->
+            <span class="line" id="journey-week1">
+              <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+              <span class="cmd"> journey --week1</span>
+            </span>
+
+            <span class="line muted"># December 1st Week – What I’ve Done So Far 🚀</span>
+
+            <span class="line section-title">  completed-setup:</span>
+            <span class="line">  • Bought domain: <strong>kvndevops.com</strong></span>
+            <span class="line">  • Installed Git, VS Code, and basic CLI tools</span>
+            <span class="line">  • Created first HTML portfolio page</span>
+            <span class="line">  • Initialized local Git repo and linked it to GitHub</span>
+            <span class="line">  • Hosted the site using GitHub Pages</span>
+            <span class="line">  • Configured GoDaddy DNS → GitHub Pages (A + CNAME records)</span>
+            <span class="line">  • Started SSL/HTTPS provisioning on GitHub</span>
+
+            <span class="line section-title">  architecture (high-level):</span>
+            <span class="line muted">  Mac (VS Code) → Git → GitHub repo → GitHub Pages → DNS (GoDaddy) → kvndevops.com 🌍</span>
+
+            <span class="line section-title">  skills-learned:</span>
+            <span class="line">  • Git basics: init, add, commit, push</span>
+            <span class="line">  • Remote setup: origin + Personal Access Token (PAT)</span>
+            <span class="line">  • GitHub Pages hosting concepts</span>
+            <span class="line">  • DNS: A records, CNAME, root vs www</span>
+            <span class="line">  • Basic SSL/HTTPS concepts</span>
+            <span class="line">  • Terminal troubleshooting (broken quotes, commands, etc.)</span>
+
+            <span class="line section-title">  errors-faced &amp; fixes:</span>
+            <span class="line">  ❌ <strong>dquote/bquote stuck in terminal</strong></span>
+            <span class="line muted">     ↳ Cause: Open quote in a command.</span>
+            <span class="line muted">     ↳ Fix: Pressed <code>CTRL + C</code> to cancel, then re-ran a clean command.</span>
+
+            <span class="line">  ❌ <strong>code command not found</strong></span>
+            <span class="line muted">     ↳ Cause: VS Code CLI not available in PATH.</span>
+            <span class="line muted">     ↳ Fix: Installed shell command from VS Code and created a symlink.</span>
+
+            <span class="line">  ❌ <strong>Git author identity unknown</strong></span>
+            <span class="line muted">     ↳ Fix: Set <code>user.name</code> and <code>user.email</code> using <code>git config --global</code>.</span>
+
+            <span class="line">  ❌ <strong>Repo not found / wrong remote URL</strong></span>
+            <span class="line muted">     ↳ Cause: Used placeholder <code>yourusername</code> instead of real GitHub username.</span>
+            <span class="line muted">     ↳ Fix: Updated remote with <code>git remote set-url origin ...</code>.</span>
+
+            <span class="line">  ❌ <strong>Push rejected (remote contains work)</strong></span>
+            <span class="line muted">     ↳ Fix: Synced with remote using <code>git pull --rebase origin main</code>, then pushed again.</span>
+
+            <span class="line">  ❌ <strong>DNS / SSL / 404 / privacy warnings</strong></span>
+            <span class="line muted">     ↳ Fix: Cleaned GoDaddy records, added correct GitHub Pages A + CNAME entries, and waited for propagation.</span>
+
+            <span class="line muted">  → Theme of the week: Deploy → Fix → Learn → Repeat 😄</span>
+
+            <span class="line section-title">  current-status:</span>
+            <span class="line">  ✔ Site deployed and reachable</span>
+            <span class="line">  ✔ DNS valid for primary domain</span>
+            <span class="line">  ⏳ HTTPS “Enforce” in progress (GitHub certificate issuing)</span>
+            <span class="line">  🎯 DevOps Engineer in progress</span>
+            <span class="line">  🔥 Current focus: Azure &amp; CI/CD</span>
+
+            <span class="line section-title">  up-next:</span>
+            <span class="line">  • Add CI/CD pipeline with GitHub Actions</span>
+            <span class="line">  • Learn Docker &amp; container basics</span>
+            <span class="line">  • Deploy an app to Azure with monitoring</span>
+            <span class="line">  • Add more real DevOps projects to this portfolio</span>
+
+            <span class="line divider"></span>
+
+            <!-- CONTACT -->
+            <span class="line" id="contact">
+              <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+              <span class="cmd"> contact --show</span>
+            </span>
+            <span class="line">  &gt; GitHub: <a href="https://github.com/john2kvn-tech" target="_blank">github.com/john2kvn-tech</a></span>
+            <span class="line">  &gt; Email: <span class="muted">[add your email here]</span></span>
+            <span class="line">  &gt; LinkedIn: <span class="muted">[add your LinkedIn URL here]</span></span>
+
+            <span class="line divider"></span>
+
+            <!-- TYPING LINE -->
+            <span class="line">
+              <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+              <span id="typing-line" class="cmd"></span><span class="cursor"></span>
+            </span>
+          </div>
         </div>
-
-        <span class="line divider"></span>
-
-        <!-- whoami / about -->
-        <span class="line" id="about">
-          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-          <span class="cmd"> whoami</span>
-        </span>
-        <span class="line">  &gt; Name: <strong>John KVN</strong></span>
-        <span class="line">  &gt; Role: Aspiring DevOps / SRE engineer (DevOps Engineer in progress)</span>
-        <span class="line">  &gt; Mindset: Deploy → Fix → Learn → Repeat 😄</span>
-        <span class="line">  &gt; Current focus: <strong>Azure &amp; CI/CD</strong></span>
-        <span class="line">  &gt; About: <span class="muted">[Add a short personal summary about your background, strengths, and personality here.]</span></span>
-
-        <span class="line divider"></span>
-
-        <!-- education -->
-        <span class="line" id="education">
-          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-          <span class="cmd"> cat education.txt</span>
-        </span>
-        <span class="line section-title">  education:</span>
-        <span class="line">  • <span class="muted">[Your degree or major, e.g. “Bachelors in Social Sciences”]</span></span>
-        <span class="line">  • <span class="muted">[College/University name]</span></span>
-        <span class="line">  • <span class="muted">[Any IT / DevOps certifications or courses (real or planned)]</span></span>
-
-        <span class="line divider"></span>
-
-        <!-- IT journey -->
-        <span class="line" id="it-journey">
-          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-          <span class="cmd"> history --it-journey</span>
-        </span>
-        <span class="line section-title">  it-journey (high level):</span>
-        <span class="line">  • <span class="muted">[Year] — Started working in IT (support / operations).</span></span>
-        <span class="line">  • <span class="muted">[Year] — Gained experience with production issues, on-call, troubleshooting.</span></span>
-        <span class="line">  • <span class="muted">[Year] — Got interested in automation, cloud, and DevOps.</span></span>
-        <span class="line">  • 2025 — Decided to build a full DevOps journey starting from fundamentals.</span>
-        <span class="line">  • 2025 — Launched kvndevops.com as my public learning & portfolio space.</span>
-
-        <span class="line divider"></span>
-
-        <!-- location -->
-        <span class="line" id="location">
-          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-          <span class="cmd"> geo --where-am-i</span>
-        </span>
-        <span class="line section-title">  location / background:</span>
-        <span class="line">  • <span class="muted">[City, State, Country — e.g. “Based in the USA (EST time zone)”]</span></span>
-        <span class="line">  • Comfortable working with global teams and multiple time zones.</span>
-        <span class="line">  • Open to hybrid/remote roles in DevOps / SRE.</span>
-
-        <span class="line divider"></span>
-
-        <!-- skills -->
-        <span class="line" id="skills">
-          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-          <span class="cmd"> skills --list</span>
-        </span>
-        <span class="line section-title">  core:</span>
-        <span class="line">
-          <span class="tag tag--main">DevOps mindset</span>
-          <span class="tag">Aspiring DevOps Engineer</span>
-          <span class="tag">Linux / Shell</span>
-          <span class="tag">Git &amp; GitHub</span>
-          <span class="tag">Troubleshooting</span>
-        </span>
-        <span class="line section-title">  platform &amp; tools (growing):</span>
-        <span class="line">
-          <span class="tag">Azure (beginner)</span>
-          <span class="tag">Azure DevOps / GitHub Actions (learning)</span>
-          <span class="tag">CI/CD pipelines</span>
-          <span class="tag">Docker (learning)</span>
-          <span class="tag">Terraform (learning)</span>
-        </span>
-        <span class="line section-title">  soft skills:</span>
-        <span class="line">
-          <span class="tag">24/7 support experience</span>
-          <span class="tag">Problem solving</span>
-          <span class="tag">Ownership</span>
-          <span class="tag">Communication</span>
-        </span>
-
-        <span class="line divider"></span>
-
-        <!-- projects -->
-        <span class="line" id="projects">
-          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-          <span class="cmd"> projects --latest</span>
-        </span>
-        <span class="line">  [1] <span class="ok">Portfolio bootstrap</span></span>
-        <span class="line muted">      Static terminal-style site hosted on GitHub Pages and mapped to kvndevops.com.</span>
-        <span class="line muted">      Stack: HTML · CSS · Git · GitHub Pages · DNS (GoDaddy) · SSL (GitHub).</span>
-
-        <span class="line">  [2] <span class="muted">ci-cd-lab (coming soon)</span></span>
-        <span class="line muted">      Plan: build a CI/CD pipeline that tests &amp; auto-deploys this site on every push.</span>
-
-        <span class="line">  [3] <span class="muted">azure-playground (coming soon)</span></span>
-        <span class="line muted">      Plan: deploy a containerized app to Azure with monitoring &amp; alerts.</span>
-
-        <span class="line divider"></span>
-
-        <!-- status -->
-        <span class="line">
-          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-          <span class="cmd"> status --now</span>
-        </span>
-        <span class="line">  &gt; Learning path: Beginner → Intermediate → Advanced DevOps</span>
-        <span class="line">  &gt; Mode: Learning hands-on, every day.</span>
-        <span class="line">  &gt; Next steps: Docker · CI/CD · Terraform · Azure deployments</span>
-
-        <span class="line divider"></span>
-
-        <!-- journey log week 1 -->
-        <span class="line" id="journey-week1">
-          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-          <span class="cmd"> journey --week1</span>
-        </span>
-
-        <span class="line muted"># December 1st Week – What I’ve Done So Far 🚀</span>
-
-        <span class="line section-title">  completed-setup:</span>
-        <span class="line">  • Bought domain: <strong>kvndevops.com</strong></span>
-        <span class="line">  • Installed Git, VS Code, and basic CLI tools</span>
-        <span class="line">  • Created first HTML portfolio page</span>
-        <span class="line">  • Initialized local Git repo and linked to GitHub</span>
-        <span class="line">  • Hosted site using GitHub Pages</span>
-        <span class="line">  • Configured GoDaddy DNS → GitHub Pages (A + CNAME records)</span>
-        <span class="line">  • Started SSL/HTTPS provisioning on GitHub</span>
-
-        <span class="line section-title">  architecture (high-level):</span>
-        <span class="line muted">  Mac (VS Code) → Git → GitHub repo → GitHub Pages → DNS (GoDaddy) → kvndevops.com 🌍</span>
-
-        <span class="line section-title">  skills-learned:</span>
-        <span class="line">  • Git basics: init, add, commit, push</span>
-        <span class="line">  • Remote setup: origin, Personal Access Token (PAT)</span>
-        <span class="line">  • GitHub Pages hosting flow</span>
-        <span class="line">  • DNS records: A, CNAME, root vs www</span>
-        <span class="line">  • Basic SSL/HTTPS concepts</span>
-        <span class="line">  • Terminal troubleshooting (quotes, commands, etc.)</span>
-
-        <span class="line section-title">  errors-faced &amp; fixes:</span>
-        <span class="line">  ❌ <strong>dquote/bquote stuck in terminal</strong></span>
-        <span class="line muted">     ↳ Cause: Open quote in a command.</span>
-        <span class="line muted">     ↳ Fix: Pressed <code>CTRL + C</code> to cancel, then re-ran clean commands.</span>
-
-        <span class="line">  ❌ <strong>code command not found</strong></span>
-        <span class="line muted">     ↳ Cause: VS Code CLI not in PATH.</span>
-        <span class="line muted">     ↳ Fix: Installed shell command from VS Code and created a symlink.</span>
-
-        <span class="line">  ❌ <strong>Git author identity unknown</strong></span>
-        <span class="line muted">     ↳ Fix: Set <code>user.name</code> and <code>user.email</code> with <code>git config --global</code>.</span>
-
-        <span class="line">  ❌ <strong>Repo not found / wrong remote URL</strong></span>
-        <span class="line muted">     ↳ Cause: Used <code>yourusername</code> instead of real username in Git remote.</span>
-        <span class="line muted">     ↳ Fix: Updated remote with <code>git remote set-url origin ...</code>.</span>
-
-        <span class="line">  ❌ <strong>Push rejected (remote contains work)</strong></span>
-        <span class="line muted">     ↳ Fix: Synced with remote using <code>git pull --rebase origin main</code>, then pushed.</span>
-
-        <span class="line">  ❌ <strong>DNS / SSL / 404 / privacy warnings</strong></span>
-        <span class="line muted">     ↳ Fix: Cleaned GoDaddy records, added correct A + CNAME entries, waited for DNS &amp; SSL to propagate.</span>
-
-        <span class="line muted">  → Theme of the week: Deploy → Fix → Learn → Repeat 😄</span>
-
-        <span class="line section-title">  current-status:</span>
-        <span class="line">  ✔ Site deployed and reachable</span>
-        <span class="line">  ✔ DNS valid for primary domain</span>
-        <span class="line">  ⏳ HTTPS “Enforce” in progress (GitHub cert issuing)</span>
-        <span class="line">  🎯 DevOps Engineer in progress</span>
-        <span class="line">  🔥 Current focus: Azure &amp; CI/CD</span>
-
-        <span class="line section-title">  up-next:</span>
-        <span class="line">  • Add CI/CD pipeline with GitHub Actions</span>
-        <span class="line">  • Learn Docker &amp; container basics</span>
-        <span class="line">  • Deploy an app to Azure + monitoring</span>
-        <span class="line">  • Add more real DevOps projects to this portfolio</span>
-
-        <span class="line divider"></span>
-
-        <!-- contact -->
-        <span class="line" id="contact">
-          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-          <span class="cmd"> contact --show</span>
-        </span>
-        <span class="line">  &gt; GitHub: <a href="https://github.com/john2kvn-tech" target="_blank">github.com/john2kvn-tech</a></span>
-        <span class="line">  &gt; Email: <span class="muted">[add your email here]</span></span>
-        <span class="line">  &gt; LinkedIn: <span class="muted">[add your LinkedIn URL here]</span></span>
-
-        <span class="line divider"></span>
-
-        <!-- typing line -->
-        <span class="line">
-          <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
-          <span id="typing-line" class="cmd"></span><span class="cursor"></span>
-        </span>
-      </div>
+      </main>
     </div>
   </div>
 
