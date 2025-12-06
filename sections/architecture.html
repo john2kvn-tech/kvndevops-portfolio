@@ -1,0 +1,36 @@
+<span class="line">
+  <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+  <span class="cmd"> architecture --show</span>
+</span>
+<span class="line muted"># Portfolio Deployment Architecture</span>
+
+<span class="line section-title">  deployment-flow:</span>
+<span class="line muted">  Local Dev → GitHub Repo → GitHub Pages → DNS + SSL → kvndevops.com 🌍</span>
+<span class="line">• Edit website on local Mac using VS Code</span>
+<span class="line">• Use Git to commit and push changes to GitHub</span>
+<span class="line">• GitHub Pages automatically hosts and updates the static site</span>
+<span class="line">• GoDaddy DNS routes traffic to GitHub Pages</span>
+<span class="line">• GitHub issues SSL certificate so the site is available over HTTPS</span>
+
+<span class="line section-title">  ui-layout:</span>
+<span class="line muted">  Sidebar Navigation + Terminal UI Content</span>
+<span class="line">┌────────────────────────────────────────────┐</span>
+<span class="line">│ Sidebar Navigation  →  Section Switch      │</span>
+<span class="line">│ Terminal Window     →  Scrollable Content  │</span>
+<span class="line">└────────────────────────────────────────────┘</span>
+
+<span class="line section-title">  front-end-components:</span>
+<span class="line">• HTML → structure</span>
+<span class="line">• CSS Flexbox → left sidebar + main layout</span>
+<span class="line">• CSS Theme → terminal look and styling</span>
+<span class="line">• JavaScript → typing simulation + section switching</span>
+
+<span class="line section-title">  benefits:</span>
+<span class="line">✔ Fast (static site, no backend complexity)</span>
+<span class="line">✔ Secure (HTTPS via GitHub-managed SSL)</span>
+<span class="line">✔ Free hosting (GitHub Pages)</span>
+<span class="line">✔ Uses a real DevOps workflow (Git, GitHub, DNS, deployment)</span>
+
+<span class="line muted">
+  → This architecture shows entry-level DevOps skills: source control, hosting, DNS, SSL, and deployment.
+</span>

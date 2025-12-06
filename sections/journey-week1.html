@@ -1,0 +1,63 @@
+<span class="line">
+  <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+  <span class="cmd"> journey --week1</span>
+</span>
+
+<span class="line muted"># December 1st Week – What I’ve Done So Far 🚀</span>
+
+<span class="line section-title">  completed-setup:</span>
+<span class="line">• Bought domain: <strong>kvndevops.com</strong></span>
+<span class="line">• Installed Git, VS Code, and basic CLI tools</span>
+<span class="line">• Created first HTML portfolio page</span>
+<span class="line">• Initialized local Git repo and linked it to GitHub</span>
+<span class="line">• Hosted the site using GitHub Pages</span>
+<span class="line">• Configured GoDaddy DNS → GitHub Pages (A + CNAME records)</span>
+<span class="line">• Started SSL/HTTPS provisioning on GitHub</span>
+
+<span class="line section-title">  architecture (high-level):</span>
+<span class="line muted">  Mac (VS Code) → Git → GitHub repo → GitHub Pages → DNS (GoDaddy) → kvndevops.com 🌍</span>
+
+<span class="line section-title">  skills-learned:</span>
+<span class="line">• Git basics: init, add, commit, push</span>
+<span class="line">• Remote setup: origin + Personal Access Token (PAT)</span>
+<span class="line">• GitHub Pages hosting concepts</span>
+<span class="line">• DNS: A records, CNAME, root vs www</span>
+<span class="line">• Basic SSL/HTTPS concepts</span>
+<span class="line">• Terminal troubleshooting (broken quotes, commands, etc.)</span>
+
+<span class="line section-title">  errors-faced &amp; fixes:</span>
+<span class="line">❌ dquote/bquote stuck in terminal</span>
+<span class="line muted">   ↳ Cause: Open quote in a command.</span>
+<span class="line muted">   ↳ Fix: Pressed <code>CTRL + C</code> to cancel, then re-ran a clean command.</span>
+
+<span class="line">❌ code command not found</span>
+<span class="line muted">   ↳ Cause: VS Code CLI not available in PATH.</span>
+<span class="line muted">   ↳ Fix: Installed shell command from VS Code and created a symlink.</span>
+
+<span class="line">❌ Git author identity unknown</span>
+<span class="line muted">   ↳ Fix: Set <code>user.name</code> and <code>user.email</code> using <code>git config --global</code>.</span>
+
+<span class="line">❌ Repo not found / wrong remote URL</span>
+<span class="line muted">   ↳ Cause: Used placeholder <code>yourusername</code> instead of real GitHub username.</span>
+<span class="line muted">   ↳ Fix: Updated remote with <code>git remote set-url origin ...</code>.</span>
+
+<span class="line">❌ Push rejected (remote contains work)</span>
+<span class="line muted">   ↳ Fix: Synced with remote using <code>git pull --rebase origin main</code>, then pushed again.</span>
+
+<span class="line">❌ DNS / SSL / 404 / privacy warnings</span>
+<span class="line muted">   ↳ Fix: Cleaned GoDaddy records, added correct GitHub Pages A + CNAME entries, and waited for propagation.</span>
+
+<span class="line muted">→ Theme of the week: Deploy → Fix → Learn → Repeat 😄</span>
+
+<span class="line section-title">  current-status:</span>
+<span class="line">✔ Site deployed and reachable</span>
+<span class="line">✔ DNS valid for primary domain</span>
+<span class="line">⏳ HTTPS “Enforce” in progress (GitHub certificate issuing)</span>
+<span class="line">🎯 DevOps Engineer in progress</span>
+<span class="line">🔥 Current focus: Azure &amp; CI/CD</span>
+
+<span class="line section-title">  up-next:</span>
+<span class="line">• Add CI/CD pipeline with GitHub Actions</span>
+<span class="line">• Learn Docker &amp; container basics</span>
+<span class="line">• Deploy an app to Azure with monitoring</span>
+<span class="line">• Add more real DevOps projects to this portfolio</span>

@@ -1,0 +1,40 @@
+<span class="line">
+  <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+  <span class="cmd"> cat education.txt</span>
+</span>
+<span class="line section-title">  education:</span>
+<span class="line">• <span class="muted">[Add your degree / major here, e.g. “Bachelors in Social Sciences”]</span></span>
+<span class="line">• <span class="muted">[Add your college / university name here]</span></span>
+<span class="line">• <span class="muted">[Add any current or planned IT / DevOps courses or certifications]</span></span>
+
+<span class="line divider"></span>
+
+<span class="line section-title">  diploma-verification:</span>
+<span class="line muted">
+  # Enter the 4-digit PIN to unlock diploma link
+</span>
+
+<span class="line">
+  PIN:
+  <input
+    type="password"
+    id="diploma-pin"
+    maxlength="4"
+    style="background:#020617;border:1px solid #4b5563;color:#e5e7eb;padding:2px 6px;border-radius:6px;font-family:inherit;font-size:12px;width:60px;"
+  />
+  <button
+    id="diploma-btn"
+    style="margin-left:6px;background:#16a34a;border:1px solid #16a34a;color:#e5e7eb;padding:2px 10px;border-radius:999px;font-size:11px;cursor:pointer;"
+  >
+    Unlock
+  </button>
+</span>
+
+<span class="line muted" id="diploma-msg"></span>
+
+<span class="line" id="diploma-link-row" style="display:none;">
+  &gt; Diploma:
+  <a href="https://www.parchment.com/u/award/90d0e4a81c46468d08a9d423bbe89ce5/file" target="_blank">
+    View verified diploma
+  </a>
+</span>
