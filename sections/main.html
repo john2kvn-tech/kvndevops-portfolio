@@ -1,51 +1,360 @@
-<span class="line">
-  <span class="prompt"><span class="user">kvn</span>@<span class="path">main-console</span>$</span>
-  <span class="cmd"> sysinfo --overview</span>
-</span>
+<style>
+  .kvn-landing {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
 
-<span class="line section-title">  system-status:</span>
-<span class="line">• Mode: Learning · Building · Automating</span>
-<span class="line">• Focus: DevOps fundamentals → Cloud → Automation</span>
-<span class="line">• Motto: <strong>Deploy → Fix → Learn → Repeat</strong></span>
+  .landing-hero {
+    padding: 10px 12px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(34, 197, 94, 0.35);
+    background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), #020617 55%, #000 100%);
+    box-shadow:
+      0 0 22px rgba(34, 197, 94, 0.18),
+      0 0 0 1px rgba(15, 23, 42, 0.9);
+  }
 
-<span class="line divider"></span>
+  .landing-hero-title {
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #bbf7d0;
+    text-shadow: 0 0 8px rgba(34, 197, 94, 0.7);
+    margin-bottom: 6px;
+  }
 
-<span class="line section-title">  learning-sprints:</span>
-<span class="line">• Sprint 01 → Git · GitHub · basic CLI</span>
-<span class="line">• Sprint 02 → Azure fundamentals + static hosting</span>
-<span class="line">• Sprint 03 → CI/CD pipelines (GitHub Actions / Azure DevOps)</span>
-<span class="line">• Sprint 04 → Docker &amp; containers</span>
-<span class="line">• Sprint 05 → Monitoring, logs, and reliability</span>
+  .landing-hero-sub {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-bottom: 4px;
+  }
 
-<span class="line divider"></span>
+  .landing-hero-sub strong {
+    color: #e5e7eb;
+  }
 
-<span class="line section-title">  tech-stack (target):</span>
-<span class="line">
-  <span class="tag tag--main">DevOps</span>
-  <span class="tag">Git</span>
-  <span class="tag">GitHub</span>
-  <span class="tag">Azure</span>
-  <span class="tag">CI/CD</span>
-  <span class="tag">Docker</span>
-  <span class="tag">Terraform</span>
-  <span class="tag">Monitoring</span>
-</span>
+  .landing-hero-command {
+    font-size: 12px;
+    color: #e5e7eb;
+    margin-top: 4px;
+  }
 
-<span class="line divider"></span>
+  .landing-hero-command .prompt {
+    margin-right: 4px;
+  }
 
-<span class="line section-title">  future-systems &amp; robotics:</span>
-<span class="line">• Goal: Let scripts, bots, and pipelines handle the repeatable work.</span>
-<span class="line">• Humans: design systems, make decisions, solve complex problems.</span>
-<span class="line">• Machines: run tests, deploy code, scale apps, watch metrics.</span>
-<span class="line">• Vision: Build setups where robots / automation do the boring parts.</span>
+  .scanline {
+    position: relative;
+    overflow: hidden;
+  }
 
-<span class="line divider"></span>
+  .scanline::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(15, 23, 42, 0.3),
+      rgba(15, 23, 42, 0.3) 1px,
+      rgba(0, 0, 0, 0.7) 2px
+    );
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+    opacity: 0.5;
+  }
 
-<span class="line section-title">  main-goal:</span>
-<span class="line">• Turn this lab into a collection of real DevOps projects.</span>
-<span class="line">• Show the journey from beginner → confident DevOps engineer.</span>
-<span class="line">• Keep everything transparent and practical.</span>
+  .module-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
 
-<span class="line muted">
-  → No personal data here. Just KVN lab status, tech roadmap, and future automation vision.
-</span>
+  @media (max-width: 900px) {
+    .module-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .module-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .module-card {
+    position: relative;
+    padding: 10px 10px 9px;
+    border-radius: 10px;
+    border: 1px solid rgba(31, 41, 55, 0.85);
+    background: radial-gradient(circle at top left, #020617 0, #020617 50%, #020617 100%);
+    cursor: pointer;
+    overflow: hidden;
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease,
+      transform 0.1s ease,
+      background 0.15s ease;
+  }
+
+  .module-card::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    background:
+      radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.15), transparent 60%),
+      radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.1), transparent 55%);
+    opacity: 0.0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+
+  .module-card:hover {
+    border-color: rgba(34, 197, 94, 0.85);
+    box-shadow:
+      0 0 18px rgba(34, 197, 94, 0.35),
+      0 0 0 1px rgba(15, 23, 42, 0.95);
+    transform: translateY(-1px);
+    background: radial-gradient(circle at top, #020617 0, #020617 55%, #020617 100%);
+  }
+
+  .module-card:hover::before {
+    opacity: 1;
+  }
+
+  .module-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: #9ca3af;
+    margin-bottom: 3px;
+  }
+
+  .module-title {
+    font-size: 12px;
+    color: #e5e7eb;
+    margin-bottom: 4px;
+  }
+
+  .module-sub {
+    font-size: 11px;
+    color: #9ca3af;
+    margin-bottom: 6px;
+  }
+
+  .module-command {
+    font-size: 11px;
+    color: #bbf7d0;
+    font-family: inherit;
+  }
+
+  .module-command .prompt {
+    color: #22c55e;
+  }
+
+  .module-command .cmd {
+    color: #d1fae5;
+  }
+
+  .story {
+    margin-top: 4px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px dashed rgba(55, 65, 81, 0.9);
+    background: radial-gradient(circle at top, rgba(15, 23, 42, 0.7), #020617 60%, #020617 100%);
+  }
+
+  .story-header {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #9ca3af;
+    margin-bottom: 6px;
+  }
+
+  .story-section {
+    margin-bottom: 8px;
+  }
+
+  .story-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .story-tag {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    margin-bottom: 2px;
+    color: #e5e7eb;
+    background: rgba(15, 23, 42, 0.85);
+  }
+
+  .story-log {
+    font-size: 11px;
+    color: #e5e7eb;
+  }
+
+  .story-log .muted {
+    font-size: 11px;
+  }
+</style>
+
+<div class="kvn-landing">
+
+  <!-- HERO / COMMAND CENTER -->
+  <div class="landing-hero scanline">
+    <div class="landing-hero-title">
+      ████ KVN DEVOPS COMMAND CENTER ████
+    </div>
+    <div class="landing-hero-sub">
+      <strong>Mode:</strong> DevOps Engineer in progress · <span class="muted">traditional IT → automation → security → AI</span>
+    </div>
+    <div class="landing-hero-sub">
+      <strong>Objective:</strong> build, break, and automate systems end-to-end.
+    </div>
+
+    <div class="landing-hero-command">
+      <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+      <span class="cmd"> select --module &quot;area-to-explore&quot;</span>
+    </div>
+    <div class="landing-hero-sub" style="margin-top:4px;">
+      <span class="muted"># click a module below to dive deeper · side menu shows personal details, skills, projects, and journey logs</span>
+    </div>
+  </div>
+
+  <!-- MODULE GRID -->
+  <div class="module-grid">
+
+    <!-- DevOps Core -->
+    <div class="module-card" onclick="showSection('deployment')">
+      <div class="module-label">module 01 :: devops-core</div>
+      <div class="module-title">CI/CD Loop &amp; Delivery</div>
+      <div class="module-sub">
+        plan → code → build → test → release → deploy → operate → monitor
+      </div>
+      <div class="module-command">
+        <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+        <span class="cmd"> pipeline.view --module devops-core</span>
+      </div>
+    </div>
+
+    <!-- DevSecOps -->
+    <div class="module-card" onclick="showSection('architecture')">
+      <div class="module-label">module 02 :: devsecops-shield</div>
+      <div class="module-title">Security in the Pipeline</div>
+      <div class="module-sub">
+        secrets · scans · policies wired into builds, tests, and deployments.
+      </div>
+      <div class="module-command">
+        <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+        <span class="cmd"> defense.enable --shift-left</span>
+      </div>
+    </div>
+
+    <!-- Cloud / Infra / k8s -->
+    <div class="module-card" onclick="showSection('projects')">
+      <div class="module-label">module 03 :: cloud-infra</div>
+      <div class="module-title">Cloud · Containers · IaC</div>
+      <div class="module-sub">
+        azure · kubernetes · terraform · real deployments &amp; labs.
+      </div>
+      <div class="module-command">
+        <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+        <span class="cmd"> kubectl get pods && terraform apply</span>
+      </div>
+    </div>
+
+    <!-- Automation / SRE -->
+    <div class="module-card" onclick="showSection('skills')">
+      <div class="module-label">module 04 :: automation-bots</div>
+      <div class="module-title">Scripting &amp; Reliability</div>
+      <div class="module-sub">
+        scripts, monitoring, and self-healing ideas to keep systems alive.
+      </div>
+      <div class="module-command">
+        <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+        <span class="cmd"> robot.fix --target failed-deployment</span>
+      </div>
+    </div>
+
+    <!-- MLOps / AI -->
+    <div class="module-card" onclick="showSection('journey-week2')">
+      <div class="module-label">module 05 :: mlops-intel</div>
+      <div class="module-title">Smarter Pipelines</div>
+      <div class="module-sub">
+        data → model → deploy → monitor → retrain – future learning path.
+      </div>
+      <div class="module-command">
+        <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+        <span class="cmd"> ai_pipeline.upgrade --auto</span>
+      </div>
+    </div>
+
+    <!-- Robotics / Future -->
+    <div class="module-card" onclick="showSection('it-journey')">
+      <div class="module-label">module 06 :: autonomous-future</div>
+      <div class="module-title">AI &amp; Robotics Vision</div>
+      <div class="module-sub">
+        long-term goal: orchestrate humans, software, and machines with automation.
+      </div>
+      <div class="module-command">
+        <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+        <span class="cmd"> autonomous-ops.init --kvn-lab</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SCROLL STORY: SYSTEM VERSIONS -->
+  <div class="story">
+    <div class="story-header">system evolution :: from manual to autonomous</div>
+
+    <div class="story-section">
+      <div class="story-tag">system.v1 :: manual-world</div>
+      <div class="story-log">
+        <span class="line muted">[LOG] legacy mode: traditional IT and support.</span>
+        <span class="line muted">[ISSUE] manual releases, fragile changes, late-night production issues.</span>
+        <span class="line muted">[TARGET] move from tickets &amp; guesswork → observability &amp; automation.</span>
+      </div>
+    </div>
+
+    <div class="story-section">
+      <div class="story-tag">system.v2 :: devops-core</div>
+      <div class="story-log">
+        <span class="line muted">[UPGRADE] CI/CD pipelines, git workflows, and repeatable deployments.</span>
+        <span class="line muted">[KVN] learning: git, GitHub, static sites, GitHub Pages, DNS, SSL.</span>
+        <span class="line muted">[STATUS] kvndevops.com live as a lab and portfolio space.</span>
+      </div>
+    </div>
+
+    <div class="story-section">
+      <div class="story-tag">system.v3 :: devsecops-shield</div>
+      <div class="story-log">
+        <span class="line muted">[UPGRADE] security gates join the pipeline instead of being an afterthought.</span>
+        <span class="line muted">[VISION] secrets management, static scans, policy checks on every change.</span>
+        <span class="line muted">[KVN] goal: build pipelines that ship fast <em>and</em> stay safe.</span>
+      </div>
+    </div>
+
+    <div class="story-section">
+      <div class="story-tag">system.v4 :: mlops-intel</div>
+      <div class="story-log">
+        <span class="line muted">[UPGRADE] extend DevOps thinking into data &amp; machine learning flows.</span>
+        <span class="line muted">[PIPELINE] data → features → models → deploy → monitor → retrain.</span>
+        <span class="line muted">[KVN] future exploration: how AI joins real-world delivery pipelines.</span>
+      </div>
+    </div>
+
+    <div class="story-section">
+      <div class="story-tag">system.v5 :: autonomous-future</div>
+      <div class="story-log">
+        <span class="line muted">[VISION] robots, scripts, and services handling all the repeatable work.</span>
+        <span class="line muted">[HUMANS] focus on design, strategy, and solving hard problems.</span>
+        <span class="line muted">[MISSION] Deploy → Fix → Learn → Repeat — at bigger and smarter scales.</span>
+      </div>
+    </div>
+  </div>
+
+</div>
