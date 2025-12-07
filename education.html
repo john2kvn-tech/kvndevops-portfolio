@@ -11,7 +11,7 @@
 
 <span class="line section-title">  diploma-verification:</span>
 <span class="line muted">
-  # Enter the 4-digit PIN to unlock diploma link
+  # Enter the 4-digit PIN to unlock diploma preview
 </span>
 
 <span class="line">
@@ -32,9 +32,13 @@
 
 <span class="line muted" id="diploma-msg"></span>
 
-<span class="line" id="diploma-link-row" style="display:none;">
-  &gt; Diploma:
-  <a href="https://www.parchment.com/u/award/90d0e4a81c46468d08a9d423bbe89ce5/file" target="_blank">
-    View verified diploma
-  </a>
-</span>
+<!-- Modal overlay for diploma image -->
+<div id="diploma-modal" class="diploma-modal">
+  <div class="diploma-modal-inner">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+      <span class="muted">Diploma preview (read-only)</span>
+      <button id="diploma-close" class="diploma-close">Close ✕</button>
+    </div>
+    <img src="diploma.png" alt="Diploma preview" class="diploma-img" />
+  </div>
+</div>
