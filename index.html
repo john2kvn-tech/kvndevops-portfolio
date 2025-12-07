@@ -283,29 +283,7 @@
       display: block;
     }
 
-    @media (max-width: 768px) {
-      .layout {
-        flex-direction: column;
-      }
-      .sidebar {
-        flex: none;
-        width: 100%;
-      }
-      .terminal-body {
-        max-height: 70vh;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .terminal-body {
-        font-size: 13px;
-      }
-      .term-title {
-        font-size: 11px;
-      }
-    }
-    
-      /* Diploma Modal Styles */
+    /* Diploma Modal Styles */
     .diploma-modal {
       position: fixed;
       inset: 0;
@@ -349,7 +327,29 @@
       background: rgba(248, 113, 113, 0.15);
       border-color: #f97373;
     }
-</style>
+
+    @media (max-width: 768px) {
+      .layout {
+        flex-direction: column;
+      }
+      .sidebar {
+        flex: none;
+        width: 100%;
+      }
+      .terminal-body {
+        max-height: 70vh;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .terminal-body {
+        font-size: 13px;
+      }
+      .term-title {
+        font-size: 11px;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="page">
@@ -447,7 +447,7 @@
     </div>
   </div>
 
-    <script>
+  <script>
     const commands = [
       " echo \"Deploy → Fix → Learn → Repeat\"",
       " # current focus: Azure & CI/CD",
@@ -607,50 +607,6 @@
     // default view: main console (no personal info)
     showSection("main");
     setTimeout(typeNextChar, 1000);
-        /* Diploma Modal Styles */
-    .diploma-modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.88);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 50;
-    }
-
-    .diploma-modal-inner {
-      background: #020617;
-      border-radius: 12px;
-      border: 1px solid #4b5563;
-      padding: 8px 10px 10px;
-      max-width: 90vw;
-      max-height: 90vh;
-      box-shadow:
-        0 0 0 1px rgba(15, 23, 42, 0.7),
-        0 18px 45px rgba(0, 0, 0, 0.9);
-    }
-
-    .diploma-img {
-      max-width: 100%;
-      max-height: 80vh;
-      display: block;
-      border-radius: 8px;
-    }
-
-    .diploma-close {
-      background: #111827;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
-      color: #e5e7eb;
-      padding: 2px 10px;
-      font-size: 11px;
-      cursor: pointer;
-    }
-
-    .diploma-close:hover {
-      background: rgba(248, 113, 113, 0.15);
-      border-color: #f97373;
-    }
   </script>
 </body>
 </html>
