@@ -349,6 +349,7 @@
         font-size: 11px;
       }
     }
+  
   </style>
 </head>
 <body>
@@ -489,57 +490,104 @@
       setTimeout(typeNextChar, 80);
     }
 
-    // Initialize diploma PIN listeners after education section is loaded
+        // Initialize PIN locks for diploma and transcript after education section is loaded
     function initDiplomaPin() {
+      // Diploma elements
       const diplomaPin = document.getElementById("diploma-pin");
       const diplomaBtn = document.getElementById("diploma-btn");
       const diplomaMsg = document.getElementById("diploma-msg");
       const diplomaModal = document.getElementById("diploma-modal");
       const diplomaClose = document.getElementById("diploma-close");
-      const DIPLOMA_CODE = "0279";
 
-      if (!diplomaPin || !diplomaBtn || !diplomaMsg) return;
+      // Transcript elements
+      const transcriptPin = document.getElementById("transcript-pin");
+      const transcriptBtn = document.getElementById("transcript-btn");
+      const transcriptMsg = document.getElementById("transcript-msg");
+      const transcriptModal = document.getElementById("transcript-modal");
+      const transcriptClose = document.getElementById("transcript-close");
 
-      function openModal() {
-        if (diplomaModal) {
-          diplomaModal.style.display = "flex";
+      const ACCESS_CODE = "0279";
+
+      // If neither set of elements exists, do nothing
+      if (!diplomaPin && !transcriptPin) return;
+
+      // Helpers for showing/hiding a modal
+      function openModal(modal) {
+        if (modal) {
+          modal.style.display = "flex";
         }
       }
 
-      function closeModal() {
-        if (diplomaModal) {
-          diplomaModal.style.display = "none";
+      function closeModal(modal) {
+        if (modal) {
+          modal.style.display = "none";
         }
       }
 
-      function checkDiplomaPin() {
-        if (diplomaPin.value === DIPLOMA_CODE) {
-          diplomaMsg.textContent = "✔ Access granted.";
-          diplomaMsg.classList.remove("error");
-          diplomaMsg.classList.add("ok");
-          openModal();
-        } else {
-          diplomaMsg.textContent = "✖ Invalid PIN.";
-          diplomaMsg.classList.remove("ok");
-          diplomaMsg.classList.add("error");
-          closeModal();
+      // Diploma wiring
+      if (diplomaPin && diplomaBtn && diplomaMsg && diplomaModal) {
+        function checkDiplomaPin() {
+          if (diplomaPin.value === ACCESS_CODE) {
+            diplomaMsg.textContent = "✔ Access granted.";
+            diplomaMsg.classList.remove("error");
+            diplomaMsg.classList.add("ok");
+            openModal(diplomaModal);
+          } else {
+            diplomaMsg.textContent = "✖ Invalid PIN.";
+            diplomaMsg.classList.remove("ok");
+            diplomaMsg.classList.add("error");
+            closeModal(diplomaModal);
+          }
         }
-      }
 
-      diplomaBtn.addEventListener("click", checkDiplomaPin);
-      diplomaPin.addEventListener("keyup", (e) => {
-        if (e.key === "Enter") {
-          checkDiplomaPin();
-        }
-      });
-
-      if (diplomaClose && diplomaModal) {
-        diplomaClose.addEventListener("click", closeModal);
-        diplomaModal.addEventListener("click", (e) => {
-          if (e.target === diplomaModal) {
-            closeModal();
+        diplomaBtn.addEventListener("click", checkDiplomaPin);
+        diplomaPin.addEventListener("keyup", (e) => {
+          if (e.key === "Enter") {
+            checkDiplomaPin();
           }
         });
+
+        if (diplomaClose) {
+          diplomaClose.addEventListener("click", () => closeModal(diplomaModal));
+          diplomaModal.addEventListener("click", (e) => {
+            if (e.target === diplomaModal) {
+              closeModal(diplomaModal);
+            }
+          });
+        }
+      }
+
+      // Transcript wiring
+      if (transcriptPin && transcriptBtn && transcriptMsg && transcriptModal) {
+        function checkTranscriptPin() {
+          if (transcriptPin.value === ACCESS_CODE) {
+            transcriptMsg.textContent = "✔ Access granted.";
+            transcriptMsg.classList.remove("error");
+            transcriptMsg.classList.add("ok");
+            openModal(transcriptModal);
+          } else {
+            transcriptMsg.textContent = "✖ Invalid PIN.";
+            transcriptMsg.classList.remove("ok");
+            transcriptMsg.classList.add("error");
+            closeModal(transcriptModal);
+          }
+        }
+
+        transcriptBtn.addEventListener("click", checkTranscriptPin);
+        transcriptPin.addEventListener("keyup", (e) => {
+          if (e.key === "Enter") {
+            checkTranscriptPin();
+          }
+        });
+
+        if (transcriptClose) {
+          transcriptClose.addEventListener("click", () => closeModal(transcriptModal));
+          transcriptModal.addEventListener("click", (e) => {
+            if (e.target === transcriptModal) {
+              closeModal(transcriptModal);
+            }
+          });
+        }
       }
     }
 

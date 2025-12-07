@@ -26,13 +26,13 @@
     id="diploma-btn"
     style="margin-left:6px;background:#16a34a;border:1px solid #16a34a;color:#e5e7eb;padding:2px 10px;border-radius:999px;font-size:11px;cursor:pointer;"
   >
-    Unlock
+    Unlock Diploma
   </button>
 </span>
 
 <span class="line muted" id="diploma-msg"></span>
 
-<!-- Modal overlay for diploma image -->
+<!-- Diploma Modal -->
 <div id="diploma-modal" class="diploma-modal">
   <div class="diploma-modal-inner">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
@@ -40,5 +40,41 @@
       <button id="diploma-close" class="diploma-close">Close ✕</button>
     </div>
     <img src="diploma.png" alt="Diploma preview" class="diploma-img" />
+  </div>
+</div>
+
+<span class="line divider"></span>
+
+<span class="line section-title">  transcript-verification:</span>
+<span class="line muted">
+  # Enter the same 4-digit PIN to unlock transcript preview
+</span>
+
+<span class="line">
+  PIN:
+  <input
+    type="password"
+    id="transcript-pin"
+    maxlength="4"
+    style="background:#020617;border:1px solid #4b5563;color:#e5e7eb;padding:2px 6px;border-radius:6px;font-family:inherit;font-size:12px;width:60px;"
+  />
+  <button
+    id="transcript-btn"
+    style="margin-left:6px;background:#16a34a;border:1px solid #16a34a;color:#e5e7eb;padding:2px 10px;border-radius:999px;font-size:11px;cursor:pointer;"
+  >
+    Unlock Transcript
+  </button>
+</span>
+
+<span class="line muted" id="transcript-msg"></span>
+
+<!-- Transcript Modal -->
+<div id="transcript-modal" class="diploma-modal">
+  <div class="diploma-modal-inner">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+      <span class="muted">Transcript preview (read-only)</span>
+      <button id="transcript-close" class="diploma-close">Close ✕</button>
+    </div>
+    <img src="transcript.png" alt="Transcript preview" class="diploma-img" />
   </div>
 </div>
