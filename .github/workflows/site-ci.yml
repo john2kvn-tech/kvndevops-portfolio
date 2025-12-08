@@ -1,0 +1,37 @@
+name: Site CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  basic-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show repository tree
+        run: |
+          echo "📁 Listing repo files for kvndevops.com"
+          pwd
+          ls -R
+
+      - name: Verify main site files exist
+        run: |
+          echo "✅ Checking for index.html and sections folder..."
+          test -f index.html
+          test -d sections
+          echo "All core files present."
+
+      - name: Print simple summary
+        run: |
+          echo "-------------------------------------"
+          echo "KVN DevOps Command Center CI"
+          echo "Repo: $GITHUB_REPOSITORY"
+          echo "Branch: $GITHUB_REF_NAME"
+          echo "Status: BASIC CHECKS PASSED ✅"
+          echo "-------------------------------------"
