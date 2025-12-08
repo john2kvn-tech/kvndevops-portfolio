@@ -199,7 +199,74 @@
   .story-log .muted {
     font-size: 11px;
   }
+
+    /* ASCII side / bottom decorations */
+  .kvn-landing {
+    position: relative; /* allow absolute positioning inside */
+  }
+
+  .ascii-decor {
+    position: absolute;
+    font-size: 10px;
+    color: rgba(148, 163, 184, 0.35);
+    font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    pointer-events: none;
+    user-select: none;
+    white-space: pre;
+  }
+
+  .ascii-left {
+    left: -4px;
+    top: 40px;
+    text-align: left;
+  }
+
+  .ascii-right {
+    right: -6px;
+    top: 60px;
+    text-align: right;
+  }
+
+  .ascii-bottom {
+    left: 50%;
+    bottom: -8px;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 768px) {
+    .ascii-decor {
+      display: none; /* hide decorations on small screens */
+    }
+  }
+
 </style>
+  <!-- ASCII side + bottom decorations -->
+  <div class="ascii-decor ascii-left">
+[ D ]
+[ E ]
+[ V ]
+[ O ]
+[ P ]
+[ S ]
+  </div>
+
+  <div class="ascii-decor ascii-right">
+[ D ]
+[ E ]
+[ V ]
+[ O ]
+[ P ]
+[ S ]
+  </div>
+
+  <div class="ascii-decor ascii-bottom">
++--------------------------------------+
+|   AWS   ·   AZURE   ·   GCP          |
++--------------------------------------+
+  </div>
+
 
 <div class="kvn-landing">
 
@@ -355,6 +422,37 @@
         <span class="line muted">[MISSION] Deploy → Fix → Learn → Repeat — at bigger and smarter scales.</span>
       </div>
     </div>
+  </div>
+
+</div>
+    <div class="story-section">
+      ...
+    </div>
+  </div>
+
+  <!-- ASCII side + bottom decorations -->
+  <div class="ascii-decor ascii-left">
+[ D ]
+[ E ]
+[ V ]
+[ O ]
+[ P ]
+[ S ]
+  </div>
+
+  <div class="ascii-decor ascii-right">
+[ D ]
+[ E ]
+[ V ]
+[ O ]
+[ P ]
+[ S ]
+  </div>
+
+  <div class="ascii-decor ascii-bottom">
++--------------------------------------+
+|   AWS   ·   AZURE   ·   GCP          |
++--------------------------------------+
   </div>
 
 </div>
