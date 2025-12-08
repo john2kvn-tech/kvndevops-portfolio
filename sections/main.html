@@ -200,62 +200,63 @@
     font-size: 11px;
   }
 
-    /* ASCII side / bottom decorations */
+  /* ASCII / neon side + bottom decorations */
   .kvn-landing {
-    position: relative; /* allow absolute positioning inside */
+    position: relative; /* so decorations anchor to this block */
+    padding-bottom: 40px; /* keep bottom text from overlapping */
   }
 
- /* Hacker glowing big ASCII */
-.ascii-decor {
-  position: absolute;
-  font-size: 18px; /* bigger text */
-  font-weight: 700;
-  color: #22ff55; /* neon green */
-  text-shadow:
-    0 0 8px #22ff55,
-    0 0 14px rgba(34, 197, 94, 0.7),
-    0 0 22px rgba(34, 197, 94, 0.9);
-  opacity: 0.9;
-  white-space: pre;
-  line-height: 1.1;
-  letter-spacing: 2px;
-  pointer-events: none;
-  user-select: none;
-}
+  .ascii-decor {
+    position: absolute;
+    font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    white-space: pre;
+    pointer-events: none;
+    user-select: none;
+  }
 
+  .ascii-side {
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 32px;              /* big vertical text */
+    letter-spacing: 0.4em;
+    color: #22ff55;               /* neon green */
+    text-shadow:
+      0 0 8px rgba(34, 197, 94, 0.9),
+      0 0 18px rgba(34, 197, 94, 0.8),
+      0 0 32px rgba(34, 197, 94, 1);
+    opacity: 0.95;
+    writing-mode: vertical-rl;    /* vertical orientation */
+    text-orientation: upright;
+  }
 
-  /* Stretch banners */
-.ascii-left {
-  left: -65px;
-  top: 10vh;
-  height: 80vh;
-  writing-mode: vertical-rl;  /* vertical orientation */
-  text-orientation: upright;
-}
+  .ascii-left {
+    left: -40px;
+  }
 
-.ascii-right {
-  right: -65px;
-  top: 10vh;
-  height: 80vh;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-}
+  .ascii-right {
+    right: -40px;
+  }
 
-.ascii-bottom {
-  width: 100%;
-  text-align: center;
-  bottom: -25px;
-  font-size: 20px;
-  letter-spacing: 4px;
-  text-shadow:
-    0 0 10px #00ffff,
-    0 0 20px #00ffff;
-  color: #00ffff; /* Neon cyan */
-}
+  .ascii-bottom {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -30px;
+    font-size: 18px;
+    letter-spacing: 0.35em;
+    color: #00f0ff;               /* neon cyan */
+    text-shadow:
+      0 0 10px rgba(34, 211, 238, 0.9),
+      0 0 24px rgba(34, 211, 238, 0.9);
+  }
+
+  @media (max-width: 1024px) {
+    .ascii-left { left: -20px; }
+    .ascii-right { right: -20px; }
+  }
 
   @media (max-width: 768px) {
     .ascii-decor {
-      display: none; /* hide decorations on small screens */
+      display: none; /* hide on small screens so it’s not cramped */
     }
   }
 
@@ -446,31 +447,20 @@
     <div class="story-section">
       ...
     </div>
-  </div>
 
   <!-- ASCII side + bottom decorations -->
-  <div class="ascii-decor ascii-left">
-[ D ]
-[ E ]
-[ V ]
-[ O ]
-[ P ]
-[ S ]
+  <div class="ascii-decor ascii-side ascii-left">
+DEVOPS
   </div>
 
-  <div class="ascii-decor ascii-right">
-[ D ]
-[ E ]
-[ V ]
-[ O ]
-[ P ]
-[ S ]
+  <div class="ascii-decor ascii-side ascii-right">
+DEVOPS
   </div>
 
   <div class="ascii-decor ascii-bottom">
-+--------------------------------------+
-|   AWS   ·   AZURE   ·   GCP          |
-+--------------------------------------+
+AWS   ·   AZURE   ·   GCP
   </div>
 
-</div>
+  </div>
+
+  
