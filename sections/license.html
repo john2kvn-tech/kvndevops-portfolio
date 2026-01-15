@@ -1,0 +1,43 @@
+<div class="line section-title">driver-license :: secure view (email otp)</div>
+<div class="line muted"># OTP valid 30 seconds. One-time use. Image opens in modal.</div>
+<div class="divider"></div>
+
+<div style="margin: 10px 0;">
+  <div class="line">
+    <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+    <span class="cmd"> request-otp --email</span>
+  </div>
+
+  <button id="dl-request" class="kvn-logo" style="margin:10px 0 8px;">Request OTP (Email)</button>
+
+  <div class="line muted" style="margin-top:6px;">RequestId (auto-filled):</div>
+  <input id="dl-requestId" placeholder="RequestId will appear here..." style="
+    width:100%; max-width:520px; padding:10px; margin:6px 0 10px;
+    border-radius:10px; border:1px solid rgba(148,163,184,.6);
+    background:rgba(15,23,42,.9); color:#e5e7eb; outline:none;
+  " />
+
+  <div class="line muted">Enter OTP (6 digits):</div>
+  <input id="dl-otp" inputmode="numeric" placeholder="123456" style="
+    width:100%; max-width:220px; padding:10px; margin:6px 0 10px;
+    border-radius:10px; border:1px solid rgba(148,163,184,.6);
+    background:rgba(15,23,42,.9); color:#e5e7eb; outline:none;
+  " />
+
+  <button id="dl-verify" class="kvn-logo" style="margin:6px 0 10px;">Verify OTP & View License</button>
+
+  <div id="dl-msg" class="line muted" style="margin-top:8px;"></div>
+</div>
+
+<div id="dl-modal" class="diploma-modal">
+  <div class="diploma-modal-inner">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:8px;">
+      <div class="line section-title" style="margin:0;">driver-license.png</div>
+      <button id="dl-close" class="diploma-close">Close</button>
+    </div>
+    <img id="dl-img" class="diploma-img" alt="Driver License" />
+    <div class="line muted" style="margin-top:8px;">
+      Auto-close in <span id="dl-timer">30</span>s.
+    </div>
+  </div>
+</div>
