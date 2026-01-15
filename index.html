@@ -597,35 +597,32 @@
       }
     }
 
-    async function loadSection(name) {
-      const target = document.getElementById("section-" + name);
-      if (!target) return;
+async function loadSection(name) {
+  const target = document.getElementById("section-" + name);
+  if (!target) return;
 
-      const src = target.getAttribute("data-src");
-      if (!src) return;
+  const src = target.getAttribute("data-src");
+  if (!src) return;
 
-      // Only fetch once per section
-      if (target.dataset.loaded === "1") {
-        if (name === "education") {
-          initDiplomaPin();
-        }
-        return;
-      }
+  // Only fetch once per section
+  if (target.dataset.loaded === "1") {
+    if (name === "education") initDiplomaPin();
+    if (name === "license") initDriverLicenseOtp();
+    return;
+  }
 
-      try {
-        const res = await fetch(src);
-        const html = await res.text();
-        target.innerHTML = html;
-        target.dataset.loaded = "1";
+  try {
+    const res = await fetch(src, { cache: "no-store" });
+    const html = await res.text();
+    target.innerHTML = html;
+    target.dataset.loaded = "1";
 
-        if (name === "education") {
-          initDiplomaPin();
-        }
-      } catch (e) {
-        target.innerHTML = '<span class="line error">Failed to load section.</span>';
-      }
-    }
-
+    if (name === "education") initDiplomaPin();
+    if (name === "license") initDriverLicenseOtp();
+  } catch (e) {
+    target.innerHTML = '<span class="line error">Failed to load section.</span>';
+  }
+}
     function showSection(name) {
       sectionDivs.forEach(sec => sec.classList.remove("active"));
       navLinks.forEach(link => link.classList.remove("nav-link-active"));
