@@ -1,161 +1,613 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>kvndevops :: John KVN</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <title>kvndevops :: John KVN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="KVN DevOps Lab — Learning, automation, and future-ready engineering." />
 
-<style>
-/* --- SAME CSS YOU ALREADY HAD (UNCHANGED) --- */
-:root {
-  --bg:#050608;--terminal-bg:#050608;--terminal-border:#1f2933;
-  --terminal-text:#e5e7eb;--terminal-muted:#6b7280;
-  --accent:#22c55e;--accent-soft:rgba(34,197,94,.12);
-  --error:#f97373;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  background:radial-gradient(circle at top,#020617 0,#020617 40%,#000 100%);
-  color:var(--terminal-text);
-  font-family:Menlo,Monaco,Consolas,monospace;
-  min-height:100vh;padding:16px;
-}
-.page{max-width:1120px;margin:0 auto}
-.layout{display:flex;gap:16px}
-.sidebar{
-  flex:0 0 230px;background:rgba(15,23,42,.9);
-  border-radius:14px;border:1px solid rgba(55,65,81,.8);
-  padding:14px
-}
-.nav-link{
-  display:flex;gap:6px;font-size:12px;padding:6px 10px;
-  border-radius:999px;border:1px solid rgba(148,163,184,.6);
-  cursor:pointer;margin-bottom:6px
-}
-.nav-link-active{border-color:#22c55e;color:#bbf7d0}
-.main{flex:1}
-.terminal{border-radius:14px;border:1px solid #1f2933;overflow:hidden}
-.terminal-body{padding:16px;max-height:80vh;overflow:auto}
-.section{display:none}
-.section.active{display:block}
-.error{color:#f97373}
-.ok{color:#22c55e}
-.kvn-logo{cursor:pointer}
-.diploma-modal{
-  position:fixed;inset:0;display:none;
-  background:rgba(15,23,42,.9);
-  align-items:center;justify-content:center;z-index:50
-}
-</style>
+  <style>
+    :root {
+      --bg: #050608;
+      --terminal-bg: #050608;
+      --terminal-border: #1f2933;
+      --terminal-text: #e5e7eb;
+      --terminal-muted: #6b7280;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.12);
+      --error: #f97373;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: radial-gradient(circle at top, #020617 0, #020617 40%, #000000 100%);
+      color: var(--terminal-text);
+      font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      min-height: 100vh;
+      padding: 16px;
+    }
+
+    .page { max-width: 1120px; margin: 0 auto; }
+    .layout { display: flex; gap: 16px; align-items: flex-start; }
+
+    /* LEFT SIDEBAR */
+    .sidebar {
+      flex: 0 0 230px;
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 14px;
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      padding: 14px 14px 16px;
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.7),
+        0 18px 45px rgba(0, 0, 0, 0.7);
+    }
+
+    .sidebar-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 2px;
+    }
+
+    .sidebar-subtitle {
+      font-size: 11px;
+      color: var(--terminal-muted);
+      margin-bottom: 10px;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: #e5e7eb;
+      text-decoration: none;
+      background: rgba(15, 23, 42, 0.95);
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+      cursor: pointer;
+    }
+
+    .nav-icon { width: 14px; text-align: center; }
+
+    .nav-link:hover {
+      background: rgba(34, 197, 94, 0.12);
+      border-color: rgba(34, 197, 94, 0.8);
+      transform: translateX(1px);
+    }
+
+    .nav-link-active {
+      background: rgba(34, 197, 94, 0.12);
+      border-color: rgba(34, 197, 94, 0.9);
+      color: #bbf7d0;
+    }
+
+    .sidebar-footer {
+      font-size: 10px;
+      color: var(--terminal-muted);
+      margin-top: 6px;
+      border-top: 1px dashed rgba(55, 65, 81, 0.9);
+      padding-top: 6px;
+    }
+
+    /* MAIN / TERMINAL */
+    .main { flex: 1; }
+
+    .terminal {
+      background: linear-gradient(135deg, #020617 0%, #020617 60%, #020617 100%);
+      border-radius: 14px;
+      border: 1px solid var(--terminal-border);
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.7),
+        0 18px 45px rgba(0, 0, 0, 0.9);
+      overflow: hidden;
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: radial-gradient(circle at top left, #1f2937, #020617);
+      border-bottom: 1px solid #111827;
+    }
+
+    .dots { display: flex; gap: 6px; }
+    .dot { width: 10px; height: 10px; border-radius: 999px; }
+    .dot.red { background: #f87171; }
+    .dot.yellow { background: #fbbf24; }
+    .dot.green { background: #34d399; }
+
+    .term-title { color: var(--terminal-muted); font-size: 12px; }
+
+    .kvn-logo {
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.8);
+      background: rgba(15, 23, 42, 0.95);
+      color: #bbf7d0;
+      font-size: 11px;
+      padding: 4px 10px;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+    }
+
+    .kvn-logo:hover {
+      background: rgba(34, 197, 94, 0.18);
+      transform: translateY(-1px);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.5);
+    }
+
+    .terminal-body {
+      padding: 16px 18px 18px;
+      font-size: 14px;
+      line-height: 1.6;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .line { display: block; margin-bottom: 4px; white-space: pre-wrap; word-break: break-word; }
+    .prompt { color: var(--accent); }
+    .user { color: #38bdf8; }
+    .path { color: #facc15; }
+    .cmd { color: #e5e7eb; }
+    .muted { color: var(--terminal-muted); }
+    .section-title { color: var(--accent); font-weight: 600; }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1.2em;
+      margin-left: 2px;
+      background: var(--accent);
+      animation: blink 1s steps(1) infinite;
+      vertical-align: text-bottom;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    a { color: #38bdf8; text-decoration: none; border-bottom: 1px dashed rgba(56, 189, 248, 0.6); }
+    a:hover { border-bottom-style: solid; }
+
+    .error { color: var(--error); }
+    .ok { color: var(--accent); }
+
+    .divider { border-bottom: 1px dashed rgba(75, 85, 99, 0.8); margin: 8px 0 10px; }
+
+    .section { display: none; margin-top: 4px; }
+    .section.active { display: block; }
+
+    /* Modal styles (used by diploma/transcript/license) */
+    .diploma-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.88);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+    }
+
+    .diploma-modal-inner {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #4b5563;
+      padding: 8px 10px 10px;
+      max-width: 90vw;
+      max-height: 90vh;
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.7),
+        0 18px 45px rgba(0, 0, 0, 0.9);
+    }
+
+    .diploma-img {
+      max-width: 100%;
+      max-height: 80vh;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .diploma-close {
+      background: #111827;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      color: #e5e7eb;
+      padding: 2px 10px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .diploma-close:hover {
+      background: rgba(248, 113, 113, 0.15);
+      border-color: #f97373;
+    }
+
+    @media (max-width: 768px) {
+      .layout { flex-direction: column; }
+      .sidebar { flex: none; width: 100%; }
+      .terminal-body { max-height: 70vh; }
+    }
+
+    @media (max-width: 640px) {
+      .terminal-body { font-size: 13px; }
+      .term-title { font-size: 11px; }
+    }
+  </style>
 </head>
 
 <body>
-<div class="page">
-<div class="layout">
+  <div class="page">
+    <div class="layout">
 
-<!-- SIDEBAR -->
-<aside class="sidebar">
-  <div class="nav-link" data-section="about">👤 About</div>
-  <div class="nav-link" data-section="license">🪪 Driver License</div>
-  <div class="nav-link" data-section="education">🎓 Education</div>
-</aside>
+      <!-- LEFT SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-title">kvndevops.com</div>
+        <div class="sidebar-subtitle">DevOps Journey · John KVN</div>
 
-<!-- MAIN -->
-<main class="main">
-<div class="terminal">
-<div class="terminal-body" id="terminal">
+        <nav class="sidebar-nav">
+          <a class="nav-link" data-section="about"><span class="nav-icon">👤</span><span>About Me</span></a>
+          <a class="nav-link" data-section="license"><span class="nav-icon">🪪</span><span>Driver License</span></a>
+          <a class="nav-link" data-section="education"><span class="nav-icon">🎓</span><span>Education</span></a>
+          <a class="nav-link" data-section="it-journey"><span class="nav-icon">📜</span><span>IT Journey</span></a>
+          <a class="nav-link" data-section="location"><span class="nav-icon">📍</span><span>Location</span></a>
+          <a class="nav-link" data-section="skills"><span class="nav-icon">🛠️</span><span>Skills</span></a>
+          <a class="nav-link" data-section="projects"><span class="nav-icon">📂</span><span>Projects</span></a>
+          <a class="nav-link" data-section="deployment"><span class="nav-icon">🚀</span><span>Deployment</span></a>
+          <a class="nav-link" data-section="architecture"><span class="nav-icon">📐</span><span>Architecture</span></a>
+          <a class="nav-link" data-section="journey-week1"><span class="nav-icon">🗓️</span><span>Journey · Week 1</span></a>
+          <a class="nav-link" data-section="journey-week2"><span class="nav-icon">🗓️</span><span>Journey · Week 2</span></a>
+          <a class="nav-link" data-section="contact"><span class="nav-icon">📞</span><span>Contact</span></a>
+        </nav>
 
-<div id="sections">
-  <div class="section" id="section-main" data-src="/sections/main.html"></div>
-  <div class="section" id="section-about" data-src="/sections/about.html"></div>
-  <div class="section" id="section-license" data-src="/sections/license.html"></div>
-  <div class="section" id="section-education" data-src="/sections/education.html"></div>
-</div>
+        <div class="sidebar-footer">
+          Last update: Dec 1st Week<br />
+          Mode: DevOps Engineer in progress
+        </div>
+      </aside>
 
-</div>
-</div>
-</main>
+      <!-- RIGHT: TERMINAL CONTENT -->
+      <main class="main">
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="dots">
+              <div class="dot red"></div>
+              <div class="dot yellow"></div>
+              <div class="dot green"></div>
+            </div>
 
-</div>
-</div>
+            <div class="term-title">kvn@devops-lab: ~/main-console — kvndevops.com</div>
 
-<script>
-/* ---------------- CONFIG ---------------- */
-const API_BASE = "https://bsig4fp8u1.execute-api.us-east-2.amazonaws.com/prod";
+            <button id="kvn-logo" class="kvn-logo" title="KVN Main Console">KVN</button>
+          </div>
 
-/* ---------------- DRIVER LICENSE OTP ---------------- */
-function initDriverLicenseOtp(){
-  const req=document.getElementById("dl-request");
-  const verify=document.getElementById("dl-verify");
-  const msg=document.getElementById("dl-msg");
-  const reqId=document.getElementById("dl-requestId");
-  const otp=document.getElementById("dl-otp");
-  const modal=document.getElementById("dl-modal");
-  const img=document.getElementById("dl-img");
-  const close=document.getElementById("dl-close");
-  const timer=document.getElementById("dl-timer");
+          <div class="terminal-body" id="terminal">
+            <span class="line muted"># kvn-devops :: personal DevOps / automation lab</span>
+            <span class="line muted"># Use the left menu for details, or tap KVN (top-right) for main console.</span>
+            <span class="line divider"></span>
 
-  if(!req||req.dataset.bound)return;
-  req.dataset.bound="1";
+            <div id="sections">
+              <div class="section" id="section-main" data-src="/sections/main.html"></div>
+              <div class="section" id="section-about" data-src="/sections/about.html"></div>
+              <div class="section" id="section-license" data-src="/sections/license.html"></div>
+              <div class="section" id="section-education" data-src="/sections/education.html"></div>
+              <div class="section" id="section-it-journey" data-src="/sections/it-journey.html"></div>
+              <div class="section" id="section-location" data-src="/sections/location.html"></div>
+              <div class="section" id="section-skills" data-src="/sections/skills.html"></div>
+              <div class="section" id="section-deployment" data-src="/sections/deployment.html"></div>
+              <div class="section" id="section-projects" data-src="/sections/projects.html"></div>
+              <div class="section" id="section-architecture" data-src="/sections/architecture.html"></div>
+              <div class="section" id="section-journey-week1" data-src="/sections/journey-week1.html"></div>
+              <div class="section" id="section-journey-week2" data-src="/sections/journey-week2.html"></div>
+              <div class="section" id="section-contact" data-src="/sections/contact.html"></div>
+            </div>
 
-  req.onclick=async()=>{
-    msg.textContent="Requesting OTP…";
-    const r=await fetch(API_BASE+"/request-otp",{method:"POST"});
-    const d=await r.json();
-    reqId.value=d.requestId;
-    msg.textContent="OTP sent to email";
-  };
+            <span class="line divider"></span>
 
-  verify.onclick=async()=>{
-    const r=await fetch(API_BASE+"/verify-otp",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({requestId:reqId.value,otp:otp.value})
+            <span class="line">
+              <span class="prompt"><span class="user">john</span>@<span class="path">kvndevops</span>$</span>
+              <span id="typing-line" class="cmd"></span><span class="cursor"></span>
+            </span>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <script>
+    /* =========================
+       CONFIG
+    ========================= */
+    const API_BASE = "https://bsig4fp8u1.execute-api.us-east-2.amazonaws.com/prod";
+
+    const commands = [
+      " echo \"Deploy → Fix → Learn → Repeat\"",
+      " # current focus: Azure & CI/CD",
+      " # building real skills with hands-on practice",
+      " # December Week 1: foundation complete"
+    ];
+
+    const typingLine = document.getElementById("typing-line");
+    const terminal = document.getElementById("terminal");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const sectionDivs = document.querySelectorAll(".section");
+    const kvnLogo = document.getElementById("kvn-logo");
+
+    let cmdIndex = 0;
+    let charIndex = 0;
+
+    function typeNextChar() {
+      if (cmdIndex >= commands.length) {
+        typingLine.textContent = "";
+        return;
+      }
+      const current = commands[cmdIndex];
+      if (charIndex < current.length) {
+        typingLine.textContent += current.charAt(charIndex);
+        charIndex++;
+      } else {
+        const line = document.createElement("span");
+        line.className = "line";
+        line.textContent = typingLine.textContent;
+        terminal.insertBefore(line, typingLine.parentElement);
+        typingLine.textContent = "";
+        cmdIndex++;
+        charIndex = 0;
+      }
+      setTimeout(typeNextChar, 60);
+    }
+
+    /* =========================================================
+       DRIVER LICENSE OTP (MUST BE TOP-LEVEL — NOT NESTED)
+    ========================================================= */
+    function initDriverLicenseOtp() {
+      const reqBtn = document.getElementById("dl-request");
+      const verifyBtn = document.getElementById("dl-verify");
+      const msg = document.getElementById("dl-msg");
+      const requestIdInput = document.getElementById("dl-requestId");
+      const otpInput = document.getElementById("dl-otp");
+
+      const modal = document.getElementById("dl-modal");
+      const closeBtn = document.getElementById("dl-close");
+      const img = document.getElementById("dl-img");
+      const timerEl = document.getElementById("dl-timer");
+
+      if (!reqBtn || !verifyBtn || !msg || !requestIdInput || !otpInput) return;
+
+      // prevent double binding if user reopens section
+      if (reqBtn.dataset.bound === "1") return;
+      reqBtn.dataset.bound = "1";
+
+      let countdown = null;
+
+      function setMsg(text, ok = false) {
+        msg.textContent = text;
+        msg.classList.remove("error", "ok");
+        msg.classList.add(ok ? "ok" : "error");
+      }
+
+      function openModal(url) {
+        if (!modal || !img) return;
+        img.src = url;
+        modal.style.display = "flex";
+
+        let t = 30;
+        if (timerEl) timerEl.textContent = String(t);
+
+        if (countdown) clearInterval(countdown);
+        countdown = setInterval(() => {
+          t -= 1;
+          if (timerEl) timerEl.textContent = String(t);
+          if (t <= 0) closeModal();
+        }, 1000);
+      }
+
+      function closeModal() {
+        if (modal) modal.style.display = "none";
+        if (img) img.src = "";
+        if (countdown) clearInterval(countdown);
+        countdown = null;
+      }
+
+      reqBtn.addEventListener("click", async () => {
+        setMsg("Requesting OTP…", true);
+        try {
+          const res = await fetch(`${API_BASE}/request-otp`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({})
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(data.message || data.error || "Request failed");
+          requestIdInput.value = (data.requestId || "").trim();
+          setMsg("OTP sent to email. Enter the 6-digit code within 30 seconds.", true);
+          otpInput.focus();
+        } catch (e) {
+          setMsg(`Request failed: ${e.message || e}`, false);
+        }
+      });
+
+      verifyBtn.addEventListener("click", async () => {
+        const requestId = (requestIdInput.value || "").trim();
+        const otp = ((otpInput.value || "").match(/\d+/g) || []).join("").slice(0, 6);
+
+        if (!requestId) return setMsg("Missing requestId. Click Request OTP first.", false);
+        if (!otp || otp.length !== 6) return setMsg("Enter a valid 6-digit OTP.", false);
+
+        setMsg("Verifying OTP…", true);
+
+        try {
+          const res = await fetch(`${API_BASE}/verify-otp`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ requestId, otp })
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(data.message || data.error || "Verification failed");
+          setMsg("Access granted. Opening secure image…", true);
+          openModal(data.url);
+        } catch (e) {
+          setMsg(`Verify failed: ${e.message || e}`, false);
+        }
+      });
+
+      if (closeBtn && modal) {
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) closeModal();
+        });
+      }
+    }
+
+    /* =========================================================
+       DIPLOMA + TRANSCRIPT PIN LOCK (EDUCATION)
+    ========================================================= */
+    function initDiplomaPin() {
+      const diplomaPin = document.getElementById("diploma-pin");
+      const diplomaBtn = document.getElementById("diploma-btn");
+      const diplomaMsg = document.getElementById("diploma-msg");
+      const diplomaModal = document.getElementById("diploma-modal");
+      const diplomaClose = document.getElementById("diploma-close");
+
+      const transcriptPin = document.getElementById("transcript-pin");
+      const transcriptBtn = document.getElementById("transcript-btn");
+      const transcriptMsg = document.getElementById("transcript-msg");
+      const transcriptModal = document.getElementById("transcript-modal");
+      const transcriptClose = document.getElementById("transcript-close");
+
+      const ACCESS_CODE = "0279";
+
+      if (!diplomaPin && !transcriptPin) return;
+
+      function openModal(modal) { if (modal) modal.style.display = "flex"; }
+      function closeModal(modal) { if (modal) modal.style.display = "none"; }
+
+      if (diplomaPin && diplomaBtn && diplomaMsg && diplomaModal) {
+        function checkDiplomaPin() {
+          if (diplomaPin.value === ACCESS_CODE) {
+            diplomaMsg.textContent = "✔ Access granted.";
+            diplomaMsg.classList.remove("error");
+            diplomaMsg.classList.add("ok");
+            openModal(diplomaModal);
+          } else {
+            diplomaMsg.textContent = "✖ Invalid PIN.";
+            diplomaMsg.classList.remove("ok");
+            diplomaMsg.classList.add("error");
+            closeModal(diplomaModal);
+          }
+        }
+        diplomaBtn.addEventListener("click", checkDiplomaPin);
+        diplomaPin.addEventListener("keyup", (e) => { if (e.key === "Enter") checkDiplomaPin(); });
+
+        if (diplomaClose) {
+          diplomaClose.addEventListener("click", () => closeModal(diplomaModal));
+          diplomaModal.addEventListener("click", (e) => { if (e.target === diplomaModal) closeModal(diplomaModal); });
+        }
+      }
+
+      if (transcriptPin && transcriptBtn && transcriptMsg && transcriptModal) {
+        function checkTranscriptPin() {
+          if (transcriptPin.value === ACCESS_CODE) {
+            transcriptMsg.textContent = "✔ Access granted.";
+            transcriptMsg.classList.remove("error");
+            transcriptMsg.classList.add("ok");
+            openModal(transcriptModal);
+          } else {
+            transcriptMsg.textContent = "✖ Invalid PIN.";
+            transcriptMsg.classList.remove("ok");
+            transcriptMsg.classList.add("error");
+            closeModal(transcriptModal);
+          }
+        }
+        transcriptBtn.addEventListener("click", checkTranscriptPin);
+        transcriptPin.addEventListener("keyup", (e) => { if (e.key === "Enter") checkTranscriptPin(); });
+
+        if (transcriptClose) {
+          transcriptClose.addEventListener("click", () => closeModal(transcriptModal));
+          transcriptModal.addEventListener("click", (e) => { if (e.target === transcriptModal) closeModal(transcriptModal); });
+        }
+      }
+    }
+
+    /* =========================================================
+       SECTION LOADER (with clear errors)
+    ========================================================= */
+    async function loadSection(name) {
+      const target = document.getElementById("section-" + name);
+      if (!target) return;
+
+      const src = target.getAttribute("data-src");
+      if (!src) return;
+
+      if (target.dataset.loaded === "1") {
+        if (name === "education") initDiplomaPin();
+        if (name === "license") initDriverLicenseOtp();
+        return;
+      }
+
+      try {
+        const res = await fetch(src, { cache: "no-store" });
+
+        if (!res.ok) {
+          const text = await res.text().catch(() => "");
+          throw new Error(`HTTP ${res.status} for ${src} :: ${text.slice(0, 120)}`);
+        }
+
+        const html = await res.text();
+        target.innerHTML = html;
+        target.dataset.loaded = "1";
+
+        if (name === "education") initDiplomaPin();
+        if (name === "license") initDriverLicenseOtp();
+      } catch (e) {
+        target.innerHTML = `<span class="line error">Failed to load section: ${String(e.message || e)}</span>`;
+      }
+    }
+
+    function showSection(name) {
+      sectionDivs.forEach(sec => sec.classList.remove("active"));
+      navLinks.forEach(link => link.classList.remove("nav-link-active"));
+
+      const target = document.getElementById("section-" + name);
+      if (target) {
+        target.classList.add("active");
+        navLinks.forEach(link => {
+          if (link.getAttribute("data-section") === name) {
+            link.classList.add("nav-link-active");
+          }
+        });
+
+        loadSection(name);
+        terminal.scrollTop = target.offsetTop - 40;
+      }
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const name = link.getAttribute("data-section");
+        showSection(name);
+      });
     });
-    const d=await r.json();
-    if(!r.ok){msg.textContent=d.error;return}
-    img.src=d.url;modal.style.display="flex";
-    let t=30;timer.textContent=t;
-    const iv=setInterval(()=>{if(--t<=0){modal.style.display="none";clearInterval(iv)}timer.textContent=t},1000);
-  };
 
-  close.onclick=()=>modal.style.display="none";
-}
+    if (kvnLogo) {
+      kvnLogo.addEventListener("click", () => showSection("main"));
+    }
 
-/* ---------------- DIPLOMA PIN ---------------- */
-function initDiplomaPin(){
-  const pin=document.getElementById("diploma-pin");
-  const btn=document.getElementById("diploma-btn");
-  const modal=document.getElementById("diploma-modal");
-  if(!pin||btn.dataset.bound)return;
-  btn.dataset.bound="1";
-  btn.onclick=()=>{if(pin.value==="0279")modal.style.display="flex"};
-}
-
-/* ---------------- SECTION LOADER ---------------- */
-async function loadSection(name){
-  const sec=document.getElementById("section-"+name);
-  if(!sec||sec.dataset.loaded)return;
-  const html=await fetch(sec.dataset.src).then(r=>r.text());
-  sec.innerHTML=html;sec.dataset.loaded="1";
-  if(name==="license")initDriverLicenseOtp();
-  if(name==="education")initDiplomaPin();
-}
-
-/* ---------------- NAV ---------------- */
-document.querySelectorAll(".nav-link").forEach(l=>{
-  l.onclick=()=>{
-    document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
-    const name=l.dataset.section;
-    const s=document.getElementById("section-"+name);
-    s.classList.add("active");
-    loadSection(name);
-  };
-});
-
-/* DEFAULT */
-loadSection("main");
-</script>
-
+    // default view
+    showSection("main");
+    // typing effect optional; enable if you want
+    // setTimeout(typeNextChar, 800);
+  </script>
 </body>
 </html>
