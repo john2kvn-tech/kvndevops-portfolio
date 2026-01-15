@@ -440,7 +440,7 @@
               <div class="section" id="section-journey-week1" data-src="sections/journey-week1.html"></div>
               <div class="section" id="section-journey-week2" data-src="sections/journey-week2.html"></div>
               <div class="section" id="section-contact" data-src="sections/contact.html"></div>
-              <div class="section" id="section-license" data-src="sections/license.html"></div>
+              <div class="section" id="section-license" data-src="/sections/license.html"></div>
 
             </div>
 
@@ -607,7 +607,7 @@ async function loadSection(name) {
   const src = target.getAttribute("data-src");
   if (!src) return;
 
-  // Only fetch once
+  // already loaded
   if (target.dataset.loaded === "1") {
     if (name === "education") initDiplomaPin();
     if (name === "license") initDriverLicenseOtp();
@@ -616,6 +616,12 @@ async function loadSection(name) {
 
   try {
     const res = await fetch(src, { cache: "no-store" });
+
+    if (!res.ok) {
+      const text = await res.text().catch(() => "");
+      throw new Error(`HTTP ${res.status} for ${src} :: ${text.slice(0, 120)}`);
+    }
+
     const html = await res.text();
     target.innerHTML = html;
     target.dataset.loaded = "1";
@@ -623,9 +629,11 @@ async function loadSection(name) {
     if (name === "education") initDiplomaPin();
     if (name === "license") initDriverLicenseOtp();
   } catch (e) {
-    target.innerHTML = '<span class="line error">Failed to load section.</span>';
+    target.innerHTML =
+      `<span class="line error">Failed to load section: ${String(e.message || e)}</span>`;
   }
 }
+
     function showSection(name) {
       sectionDivs.forEach(sec => sec.classList.remove("active"));
       navLinks.forEach(link => link.classList.remove("nav-link-active"));
