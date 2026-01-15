@@ -397,6 +397,9 @@
           <a class="nav-link" data-section="contact">
             <span class="nav-icon">📞</span><span>Contact</span>
           </a>
+          <a class="nav-link" data-section="license">
+            <span class="nav-icon">🪪</span><span>Driver License</span>
+          </a>
         </nav>
 
         <div class="sidebar-footer">
@@ -438,7 +441,7 @@
               <div class="section" id="section-journey-week2" data-src="sections/journey-week2.html"></div>
               <div class="section" id="section-contact" data-src="sections/contact.html"></div>
               <div class="section" id="section-license" data-src="sections/license.html"></div>
-<div class="section" id="section-license" data-src="sections/license.html"></div>
+
             </div>
 
             <span class="line divider"></span>
@@ -604,7 +607,7 @@ async function loadSection(name) {
   const src = target.getAttribute("data-src");
   if (!src) return;
 
-  // Only fetch once per section
+  // Only fetch once
   if (target.dataset.loaded === "1") {
     if (name === "education") initDiplomaPin();
     if (name === "license") initDriverLicenseOtp();
@@ -657,7 +660,7 @@ async function loadSection(name) {
 
     // default view: main console (no personal info)
     showSection("main");
-    setTimeout(typeNextChar, 1000);
+    // ssetTimeout(typeNextChar, 1000);
   </script>
 </body>
 </html>
