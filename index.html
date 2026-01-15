@@ -428,21 +428,22 @@
             <span class="line divider"></span>
 
             <div id="sections">
-              <div class="section" id="section-main" data-src="sections/main.html"></div>
-              <div class="section" id="section-about" data-src="sections/about.html"></div>
-              <div class="section" id="section-education" data-src="sections/education.html"></div>
-              <div class="section" id="section-it-journey" data-src="sections/it-journey.html"></div>
-              <div class="section" id="section-location" data-src="sections/location.html"></div>
-              <div class="section" id="section-skills" data-src="sections/skills.html"></div>
-              <div class="section" id="section-deployment" data-src="sections/deployment.html"></div>
-              <div class="section" id="section-projects" data-src="sections/projects.html"></div>
-              <div class="section" id="section-architecture" data-src="sections/architecture.html"></div>
-              <div class="section" id="section-journey-week1" data-src="sections/journey-week1.html"></div>
-              <div class="section" id="section-journey-week2" data-src="sections/journey-week2.html"></div>
-              <div class="section" id="section-contact" data-src="sections/contact.html"></div>
-              <div class="section" id="section-license" data-src="/sections/license.html"></div>
+  <div class="section" id="section-main" data-src="/sections/main.html"></div>
+  <div class="section" id="section-about" data-src="/sections/about.html"></div>
+  <div class="section" id="section-education" data-src="/sections/education.html"></div>
+  <div class="section" id="section-it-journey" data-src="/sections/it-journey.html"></div>
+  <div class="section" id="section-location" data-src="/sections/location.html"></div>
+  <div class="section" id="section-skills" data-src="/sections/skills.html"></div>
+  <div class="section" id="section-deployment" data-src="/sections/deployment.html"></div>
+  <div class="section" id="section-projects" data-src="/sections/projects.html"></div>
+  <div class="section" id="section-architecture" data-src="/sections/architecture.html"></div>
+  <div class="section" id="section-journey-week1" data-src="/sections/journey-week1.html"></div>
+  <div class="section" id="section-journey-week2" data-src="/sections/journey-week2.html"></div>
+  <div class="section" id="section-contact" data-src="/sections/contact.html"></div>
+  <div class="section" id="section-license" data-src="/sections/license.html"></div>
+</div>
 
-            </div>
+
 
             <span class="line divider"></span>
 
@@ -607,7 +608,6 @@ async function loadSection(name) {
   const src = target.getAttribute("data-src");
   if (!src) return;
 
-  // already loaded
   if (target.dataset.loaded === "1") {
     if (name === "education") initDiplomaPin();
     if (name === "license") initDriverLicenseOtp();
@@ -633,6 +633,7 @@ async function loadSection(name) {
       `<span class="line error">Failed to load section: ${String(e.message || e)}</span>`;
   }
 }
+
 
     function showSection(name) {
       sectionDivs.forEach(sec => sec.classList.remove("active"));
