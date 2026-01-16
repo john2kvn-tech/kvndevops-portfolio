@@ -242,6 +242,23 @@
       .terminal-body { font-size: 13px; }
       .term-title { font-size: 11px; }
     }
+    /* Driver License modal (full-screen image behavior) */
+#dl-modal .diploma-modal-inner {
+  padding: 10px;
+  max-width: 96vw;
+  max-height: 92vh;
+}
+
+#dl-img {
+  width: auto;
+  height: auto;
+  max-width: 94vw;
+  max-height: 82vh;
+  display: block;
+  border-radius: 10px;
+  object-fit: contain;
+  background: rgba(2, 6, 23, 0.6);
+}
   </style>
 </head>
 
@@ -398,8 +415,16 @@
 
       function openModal(url) {
         if (!modal || !img) return;
-        img.src = url;
-        modal.style.display = "flex";
+        img.onerror = () => {
+  setMsg("Image failed to load. URL: " + url, false);
+};
+
+img.onload = () => {
+  // optional: clear any previous error message
+};
+
+img.src = url;
+modal.style.display = "flex";
 
         let t = 30;
         if (timerEl) timerEl.textContent = String(t);
@@ -455,7 +480,22 @@
           const data = await res.json().catch(() => ({}));
           if (!res.ok) throw new Error(data.message || data.error || "Verification failed");
           setMsg("Access granted. Opening secure image…", true);
-          openModal(data.url);
+          const raw = (data.url || data.key || data.objectKey || "").trim();
+
+if (!raw) {
+  return setMsg("Verify succeeded but no image URL returned by API.", false);
+}
+
+// If API returns a filename like "driver-license.png", treat it as site-local
+// If it returns "/driver-license.png", keep it
+// If it returns "https://...", keep it
+let finalUrl = raw;
+
+if (!raw.startsWith("http") && !raw.startsWith("/")) {
+  finalUrl = "/" + raw;
+}
+
+openModal(finalUrl);
         } catch (e) {
           setMsg(`Verify failed: ${e.message || e}`, false);
         }
